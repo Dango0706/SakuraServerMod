@@ -59,6 +59,7 @@ public class AddDamageEvent {
             //刺骨
             if (mainHand.getEnchantmentLevel(EnchantmentReg.PIERCING.get()) > 0) {
                 //最大血量*1.5%*level
+                //上限150.
                 damage += Math.min(150, victim.getMaxHealth() * Config.PIERCING_MAX_HP.get() / 100 * abuser.getMainHandItem().getEnchantmentLevel(EnchantmentReg.PIERCING.get()));
             }
             //狂战士
