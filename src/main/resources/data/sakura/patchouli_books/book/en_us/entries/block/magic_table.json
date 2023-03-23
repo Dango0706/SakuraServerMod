@@ -1,0 +1,51 @@
+{
+  "name": "注魔桌",
+  "icon": "sakura:magic_table",
+  "category": "sakura:block",
+  "anchor": "table",
+  "pages": [
+    "上古时代遗留的产物,将其摆成指定造型并对下面的那个使用$(d)$(l:item/magic_stone#stone)注魔石$()好像可以发生什么...",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:magic_table",
+      "text": "后一页有古老阵法.."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "古老阵法",
+      "multiblock": {
+        "pattern":[
+          [
+            "   ", " m ","   "
+          ],
+          [
+            "   ", "   ", "   "
+          ],
+          [
+            "   ", "   ", "   "
+          ],
+          [
+            "   ", " 0 ", "   "
+          ],
+          [
+            "jnj", "djg", "jej"
+          ]
+        ],
+        "mapping": {
+          "e": "minecraft:emerald_block",
+          "d": "minecraft:diamond_block",
+          "n": "minecraft:netherite_block",
+          "g": "minecraft:gold_block",
+          "m": "sakura:magic_table",
+          "j": "sakura:jadeite_block",
+          "0": "sakura:magic_table"
+        }
+      }
+    },
+    {
+      "type": "patchouli:text",
+      "text": "启动魔法好像需要一定经验值,他会吸收掉你身上的经验值来进行注魔.$(br)记载中注魔成功会发射烟花火箭,烟花火箭的颜色代表了注魔的品质.$(br)据说每次注魔都会累计经验,当累积的经验到达一定数值时,就会获得更高品质的注魔物品."
+    }
+  ]
+}

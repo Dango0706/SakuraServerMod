@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:poisonous_potato"
+    },
+    "b": {
+      "item": "minecraft:pufferfish"
+    },
+    "c": {
+      "item": "minecraft:cake"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "item": "sakura:heart_toxic"
+  }
+}

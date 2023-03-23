@@ -1,0 +1,12 @@
+{
+  "name": "教育",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[教育]$(br)可应用类型:剑$(br)获取方式:$(l:block/magic_table#table)注魔桌",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(d)史诗$()$(br)最高附魔等级:$(6)5$(br)$()描述:从杀戮中额外获得经验值"
+    }
+  ]
+}

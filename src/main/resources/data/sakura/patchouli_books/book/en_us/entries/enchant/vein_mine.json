@@ -1,0 +1,12 @@
+{
+  "name": "连锁挖矿",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[连锁挖矿]$(br)可应用类型:工具$(br)获取方式:$(l:block/magic_table#table)注魔桌",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(b)优秀$()$(br)最高附魔等级:$(6)4$(br)$()描述:懂得都懂,蹲下激活,最大挖掘范围为10格,最大挖掘方块数量为 等级 * 5 + 2,每挖掘一个方块消耗0.5的精力,$(br)todo:暂时未做时运/精准采集相关附魔."
+    }
+  ]
+}

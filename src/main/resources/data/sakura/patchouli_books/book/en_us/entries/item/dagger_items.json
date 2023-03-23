@@ -1,0 +1,14 @@
+{
+  "name": "匕首",
+  "icon": "sakura:wooden_dagger",
+  "category": "sakura:item",
+  "pages": [
+    "匕首,锋利的新武器的选择!$(br)拥有较高的攻击力和攻速,是匕首啦~当然的,攻击距离会相较普通的剑短一点.$(br)攻击不穿胸甲的敌人时,造成的伤害翻倍",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:wooden_dagger",
+      "recipe2": "sakura:netherite_dagger"
+    }
+  ]
+}

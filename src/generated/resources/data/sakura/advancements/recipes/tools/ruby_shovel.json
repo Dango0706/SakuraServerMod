@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "sakura:ruby_shovel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sakura:ruby"
+            ]
+          },
+          {
+            "items": [
+              "minecraft:stick"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "ruby",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sakura:ruby_shovel"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "sakura:jadeite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "sakura:jadeite_gem"
+  }
+}

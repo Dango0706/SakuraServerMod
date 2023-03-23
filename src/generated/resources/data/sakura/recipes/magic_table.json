@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "sakura:magic_stone"
+    },
+    "b": {
+      "item": "sakura:ruby"
+    },
+    "c": {
+      "item": "sakura:warden_heart"
+    }
+  },
+  "pattern": [
+    "aca",
+    "bab",
+    "aca"
+  ],
+  "result": {
+    "item": "sakura:magic_table"
+  }
+}

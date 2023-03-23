@@ -1,0 +1,12 @@
+{
+  "name": "狂战士",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[狂战士]$(br)可应用类型:剑$(br)获取方式:$(l:block/magic_table#table)注魔桌$()或附魔台",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(a)不寻常$()$(br)最高附魔等级:$(6)5$(br)$()描述:根据我方护甲值额外造成伤害,额外伤害值为:$(c)等级 * 4 - 护甲值$()"
+    }
+  ]
+}

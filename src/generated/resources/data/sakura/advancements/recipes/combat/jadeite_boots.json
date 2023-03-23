@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "sakura:jadeite_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "jadeite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sakura:jadeite_gem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "jadeite",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "sakura:jadeite_boots"
+    ]
+  }
+}

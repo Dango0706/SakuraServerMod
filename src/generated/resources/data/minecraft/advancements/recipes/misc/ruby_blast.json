@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:ruby_blast"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "ruby_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sakura:ruby_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "ruby_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:ruby_blast"
+    ]
+  }
+}

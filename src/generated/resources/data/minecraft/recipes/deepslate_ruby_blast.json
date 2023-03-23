@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 160,
+  "experience": 2.0,
+  "ingredient": {
+    "item": "sakura:deepslate_ruby_ore"
+  },
+  "result": "sakura:ruby"
+}

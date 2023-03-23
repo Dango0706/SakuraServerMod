@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    "b": {
+      "item": "sakura:warden_heart"
+    },
+    "c": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "item": "sakura:the_vessel_of_the_heart"
+  }
+}
