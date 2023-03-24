@@ -22,11 +22,11 @@ public class FinalDamageEvent {
     @SubscribeEvent
     public static void Indent(LivingDamageEvent event) {
         //受害者
-        System.out.println(event.getEntity());
-        //施暴者 来源于谁(射箭找是谁射的箭)
-        System.out.println(event.getSource().getEntity());
-        //谁造成的伤害(射箭则为箭
-        System.out.println(event.getSource().getDirectEntity());
+//        LOGGER.debug(String.valueOf(event.getEntity()));
+//        //施暴者 来源于谁(射箭找是谁射的箭)
+//        LOGGER.debug(String.valueOf(event.getSource().getEntity()));
+//        //谁造成的伤害(射箭则为箭
+//        LOGGER.debug(String.valueOf(event.getSource().getDirectEntity()));
         //被害者
         LivingEntity victim = event.getEntity();
         //吸血值(不计算魔法伤害)
