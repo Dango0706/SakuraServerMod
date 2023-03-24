@@ -1,0 +1,12 @@
+{
+  "name": "熟练",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[熟练]$(br)可应用类型:剑$(br)获取方式:$(l:block/magic_table#table)注魔桌",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(b)优秀$()$(br)最高附魔等级:$(6)5$(br)$()描述:增加武器的攻击速度."
+    }
+  ]
+}

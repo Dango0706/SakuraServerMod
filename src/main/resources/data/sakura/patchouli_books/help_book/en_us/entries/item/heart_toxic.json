@@ -1,0 +1,14 @@
+{
+  "name": "有毒的心之容器",
+  "icon": "sakura:heart_toxic",
+  "category": "sakura:item",
+  "pages": [
+    "有非常强大魔力的容器,使用后永久减少生命上限",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:heart_toxic",
+      "text": "好毒..."
+    }
+  ]
+}

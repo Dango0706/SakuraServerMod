@@ -1,0 +1,19 @@
+{
+  "name": "禁锢",
+  "icon": "minecraft:potion",
+  "category": "sakura:effect",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "buff属性:负增益效果$(br)描述:禁止移动."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "图标",
+      "border": true,
+      "images": [
+            "sakura:textures/patchouli/fasten.png"
+      ]
+    }
+  ]
+}
