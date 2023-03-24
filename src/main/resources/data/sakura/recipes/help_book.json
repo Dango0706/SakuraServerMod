@@ -1,13 +1,12 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "type": "patchouli:shapeless_book_recipe",
   "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
     {
       "item": "minecraft:book"
     }
   ],
-  "result": {
-    "count": 1,
-    "item": "sakura:book"
-  }
+  "book": "sakura:help_book"
 }

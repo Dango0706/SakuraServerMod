@@ -64,7 +64,7 @@ public class SakuraGroup {
         }
 
 
-        event.registerCreativeModeTab(new ResourceLocation(MODID, "creative_tab"), builder ->
+        event.registerCreativeModeTab(new ResourceLocation(MODID, "sakura"), builder ->
                 // 设置名字
                 builder.title(Component.translatable("item_group." + MODID))
                         // 添加图标

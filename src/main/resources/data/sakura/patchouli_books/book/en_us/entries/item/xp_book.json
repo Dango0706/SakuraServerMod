@@ -1,8 +1,0 @@
-{
-  "name": "经验书",
-  "icon": "sakura:xp_book",
-  "category": "sakura:item",
-  "pages": [
-    "一个储存经验的书,最大能存储30级,"
-  ]
-}
