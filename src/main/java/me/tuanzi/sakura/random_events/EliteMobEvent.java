@@ -1,9 +1,14 @@
 package me.tuanzi.sakura.random_events;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -20,7 +25,9 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -29,16 +36,21 @@ import java.util.ArrayList;
 import static me.tuanzi.sakura.utils.Utils.COLOR_CODE;
 
 @Mod.EventBusSubscriber
-public class SpawnMobEvent {
+public class EliteMobEvent {
+    //是否是精英怪
+    static final String isElite = "elite";
+    //精英怪等级
+    static final String eliteLevel = "eliteLevel";
 
-    @SubscribeEvent
+    //受伤害
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void mobHurtEvent(LivingDamageEvent event) {
-        if (event.getEntity().getPersistentData().getBoolean("elite")) {
-            LivingEntity livingEntity = event.getEntity();
-            LivingEntity abuser = (LivingEntity) event.getSource().getEntity();
+        LivingEntity livingEntity = event.getEntity();
+        LivingEntity abuser = (LivingEntity) event.getSource().getEntity();
+        if (event.getEntity().getPersistentData().getBoolean(isElite) && abuser != null) {
             //缴械
-            if (livingEntity.getPersistentData().getBoolean(EliteSkills.disarm.getName())) {
-                String skill = EliteSkills.disarm.getName();
+            if (livingEntity.getPersistentData().getBoolean(EliteSkills.DISARM.getName())) {
+                String skill = EliteSkills.DISARM.getName();
                 //冷却到了
                 if (livingEntity.getPersistentData().getInt(skill + "冷却") <= 0) {
                     //使目标扔出主手武器
@@ -55,16 +67,30 @@ public class SpawnMobEvent {
                     }
                 }
             }
+            //重生
+            if (livingEntity.getPersistentData().getBoolean(EliteSkills.RELIFE.getName())) {
+                if (event.getAmount() > livingEntity.getHealth()) {
+                    //播放音效
+                    if (abuser instanceof ServerPlayer serverPlayer)
+                        serverPlayer.connection.send(new ClientboundSoundPacket(Holder.direct(SoundEvent.createVariableRangeEvent(ResourceLocation.tryParse("minecraft:entity.player.levelup"))), SoundSource.HOSTILE, abuser.getX(), abuser.getY(), abuser.getZ(), 1, 1.25f, 1));
+                    //设置最终伤害为0
+                    event.setAmount(0);
+                    //恢复满血
+                    livingEntity.setHealth(livingEntity.getMaxHealth());
+                    //设置为禁用
+                    livingEntity.getPersistentData().putBoolean(EliteSkills.RELIFE.getName(), false);
+                }
+            }
+
 
         }
     }
 
-    //生成成功
+    //生成
     @SubscribeEvent
     public static void mobSpawn(LivingSpawnEvent.SpecialSpawn event) {
         LevelAccessor level = event.getLevel();
         if (event.getEntity() instanceof Monster mob) {
-
             //设置基础
             double base;
             if (level.getDifficulty() == Difficulty.PEACEFUL) {
@@ -83,8 +109,8 @@ public class SpawnMobEvent {
                 if (random < 0.4) {
                     //精英
                     //生成精英怪物,添加标签
-                    mob.getPersistentData().putBoolean("elite", true);
-                    mob.getPersistentData().putInt("eliteLevel", 1);
+                    mob.getPersistentData().putBoolean(isElite, true);
+                    mob.getPersistentData().putInt(eliteLevel, 1);
                     //修改名字
                     mob.setCustomName(Component.empty().append("§a[精英]").append(mob.getName()));
                     mob.setCustomNameVisible(true);
@@ -94,8 +120,8 @@ public class SpawnMobEvent {
                 } else if (random < 0.65) {
                     //大师
                     //生成精英怪物,添加标签
-                    mob.getPersistentData().putBoolean("elite", true);
-                    mob.getPersistentData().putInt("eliteLevel", 2);
+                    mob.getPersistentData().putBoolean(isElite, true);
+                    mob.getPersistentData().putInt(eliteLevel, 2);
                     //修改名字
                     mob.setCustomName(Component.empty().append("§b[大师]").append(mob.getName()));
                     mob.setCustomNameVisible(true);
@@ -106,8 +132,8 @@ public class SpawnMobEvent {
                 } else if (random < 0.8) {
                     //超级大师
                     //生成精英怪物,添加标签
-                    mob.getPersistentData().putBoolean("elite", true);
-                    mob.getPersistentData().putInt("eliteLevel", 3);
+                    mob.getPersistentData().putBoolean(isElite, true);
+                    mob.getPersistentData().putInt(eliteLevel, 3);
                     //修改名字
                     mob.setCustomName(Component.empty().append("§d[超级大师]").append(mob.getName()));
                     mob.setCustomNameVisible(true);
@@ -118,8 +144,8 @@ public class SpawnMobEvent {
                 } else if (random < 0.95) {
                     //究极大师
                     //生成精英怪物,添加标签
-                    mob.getPersistentData().putBoolean("elite", true);
-                    mob.getPersistentData().putInt("eliteLevel", 4);
+                    mob.getPersistentData().putBoolean(isElite, true);
+                    mob.getPersistentData().putInt(eliteLevel, 4);
                     //修改名字
                     mob.setCustomName(Component.empty().append("§e[究极大师]").append(mob.getName()));
                     mob.setCustomNameVisible(true);
@@ -130,8 +156,8 @@ public class SpawnMobEvent {
                 } else {
                     //无人能挡
                     //生成精英怪物,添加标签
-                    mob.getPersistentData().putBoolean("elite", true);
-                    mob.getPersistentData().putInt("eliteLevel", 5);
+                    mob.getPersistentData().putBoolean(isElite, true);
+                    mob.getPersistentData().putInt(eliteLevel, 5);
                     //修改名字
                     mob.setCustomName(Component.empty().append("§c[无人能挡]").append(mob.getName()));
                     mob.setCustomNameVisible(true);
@@ -144,8 +170,9 @@ public class SpawnMobEvent {
                 //公共添加
                 mob.getAttributes().getInstance(Attributes.MOVEMENT_SPEED).setBaseValue(mob.getAttributeBaseValue(Attributes.MOVEMENT_SPEED) * Math.min(base, 4));
                 mob.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1);
+                double baseHealth = mob.getMaxHealth();
                 //添加技能池
-                for (int i = 0; i < (base + mob.getPersistentData().getInt("eliteLevel") * 4) / 2; i++) {
+                for (int i = 0; i < (base + mob.getPersistentData().getInt(eliteLevel) * 4) / 2; i++) {
                     if (mob.getRandom().nextDouble() < (base / 10)) {
                         ArrayList<String> skillList = new ArrayList<>();
                         for (EliteSkills skill : EliteSkills.values()) {
@@ -153,9 +180,14 @@ public class SpawnMobEvent {
                         }
                         int max = skillList.size();
                         String skill = skillList.get(mob.getRandom().nextInt(max));
+
                         if (mob.getPersistentData().contains(skill)) {
-                            //有这个技能了,那就加20%的最大生命值吧
-                            mob.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(mob.getMaxHealth() * 1.2);
+                            //有这个技能了,那就加5%的最大生命值吧
+                            if (mob.getMaxHealth() < baseHealth * 3)
+                                mob.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(mob.getMaxHealth() * 1.05);
+                            else
+                                mob.getAttributes().getInstance(Attributes.ARMOR).setBaseValue(mob.getArmorValue() * 1.05);
+
                         } else {
                             //没有这个skill
                             mob.getPersistentData().putBoolean(skill, true);
@@ -171,6 +203,7 @@ public class SpawnMobEvent {
         }
     }
 
+    //升空技能
     @SubscribeEvent
     public static void PlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.player.getPersistentData().getBoolean("被升空")) {
@@ -180,7 +213,7 @@ public class SpawnMobEvent {
         }
     }
 
-
+    //技能
     @SubscribeEvent
     public static void Livingtick(TickEvent.LevelTickEvent event) {
         Level level = event.level;
@@ -188,7 +221,7 @@ public class SpawnMobEvent {
         for (Entity entity : entityIterator) {
             if (entity instanceof Mob mob) {
                 //是精英怪
-                if (mob.getPersistentData().getInt("eliteLevel") > 0) {
+                if (mob.getPersistentData().getInt(eliteLevel) > 0) {
                     //攻击目标不是玩家
                     if (mob.getTarget() != null && mob.getTarget().getType() != EntityType.PLAYER) {
                         double x = mob.getX();
@@ -239,10 +272,11 @@ public class SpawnMobEvent {
                         double z = target.getZ();
                         Vec3 targetVec3 = new Vec3(x, y, z);
                         Vec3 mobVec3 = new Vec3(mob.getX(), mob.getY(), mob.getZ());
+                        //小于7格范围内
                         if (targetVec3.distanceTo(mobVec3) < 7) {
                             //升空
-                            if (mob.getPersistentData().getBoolean(EliteSkills.levitation.getName())) {
-                                String skill = EliteSkills.levitation.getName();
+                            if (mob.getPersistentData().getBoolean(EliteSkills.LEVITATION.getName())) {
+                                String skill = EliteSkills.LEVITATION.getName();
                                 //冷却到了
                                 if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
                                     //冷却10s
@@ -255,10 +289,9 @@ public class SpawnMobEvent {
                                 }
                             }
                             //中毒
-                            if (mob.getPersistentData().getBoolean(EliteSkills.potion.getName())) {
-                                String skill = EliteSkills.potion.getName();
+                            if (mob.getPersistentData().getBoolean(EliteSkills.POTION.getName())) {
+                                String skill = EliteSkills.POTION.getName();
                                 if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-
                                     //冷却5s
                                     mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
                                     //使目标中毒
@@ -267,8 +300,8 @@ public class SpawnMobEvent {
                                 }
                             }
                             //饥饿
-                            if (mob.getPersistentData().getBoolean(EliteSkills.hunger.getName())) {
-                                String skill = EliteSkills.hunger.getName();
+                            if (mob.getPersistentData().getBoolean(EliteSkills.HUNGER.getName())) {
+                                String skill = EliteSkills.HUNGER.getName();
                                 if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
                                     //冷却5s
                                     mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
@@ -281,7 +314,6 @@ public class SpawnMobEvent {
                             if (mob.getPersistentData().getBoolean(EliteSkills.BLINDNESS.getName())) {
                                 String skill = EliteSkills.BLINDNESS.getName();
                                 if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //小于7格
                                     //冷却10s
                                     mob.getPersistentData().putInt(skill + "冷却", 20 * 10);
                                     //使目标饥饿
@@ -292,11 +324,20 @@ public class SpawnMobEvent {
                             if (mob.getPersistentData().getBoolean(EliteSkills.WEAKNESS.getName())) {
                                 String skill = EliteSkills.WEAKNESS.getName();
                                 if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //小于7格
                                     //冷却5s
                                     mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
                                     //使目标饥饿
                                     target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+
+                                }
+                            }
+                            if (mob.getPersistentData().getBoolean(EliteSkills.WITHER.getName())) {
+                                String skill = EliteSkills.WITHER.getName();
+                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                                    //冷却5s
+                                    mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                                    //使目标饥饿
+                                    target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
 
                                 }
                             }
@@ -306,6 +347,36 @@ public class SpawnMobEvent {
             }
         }
     }
+
+    //死亡掉落更多经验
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void dropXp(LivingExperienceDropEvent event) {
+        //是精英怪
+        if (event.getEntity().getPersistentData().getBoolean(isElite)) {
+            //精英怪等级
+            int level = event.getEntity().getPersistentData().getInt(eliteLevel);
+            Level worldLevel = event.getEntity().getLevel();
+            int base;
+            if (worldLevel.getDifficulty() == Difficulty.PEACEFUL) {
+                base = 0;
+            } else if (worldLevel.getDifficulty() == Difficulty.EASY) {
+                base = 2;
+            } else if (worldLevel.getDifficulty() == Difficulty.NORMAL) {
+                base = 4;
+            } else {
+                base = 8;
+            }
+            //等级 * 基数
+            level *= level;
+            level *= base;
+            //最终为原始 * 等级的平房 * 基数 / 2.
+            event.setDroppedExperience(event.getDroppedExperience() * level / 2);
+
+
+        }
+    }
+
+
 }
 
 

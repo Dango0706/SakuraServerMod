@@ -3,6 +3,9 @@ package me.tuanzi.sakura.items;
 import me.tuanzi.sakura.blocks.BlockReg;
 import me.tuanzi.sakura.items.demonization.MagicStone;
 import me.tuanzi.sakura.items.demonization.WardenHeart;
+import me.tuanzi.sakura.items.functional.HeartToxic;
+import me.tuanzi.sakura.items.functional.TheVesselOfTheHeart;
+import me.tuanzi.sakura.items.functional.XpBook;
 import me.tuanzi.sakura.items.jadeite.*;
 import me.tuanzi.sakura.items.ruby.*;
 import me.tuanzi.sakura.items.tiered_item.DaggerItem;
@@ -42,11 +45,6 @@ public class ItemReg {
     public static final RegistryObject<Item> RUBY_ORE = ITEMS.register("ruby_ore", () -> new BlockItem(BlockReg.RUBY_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DEEP_RUBY_ORE = ITEMS.register("deepslate_ruby_ore", () -> new BlockItem(BlockReg.DEEP_RUBY_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RUBY_BLOCK = ITEMS.register("ruby_block", () -> new BlockItem(BlockReg.RUBY_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<Item> MAGIC_STONE = ITEMS.register("magic_stone", MagicStone::new);
-    public static final RegistryObject<Item> MAGIC_TABLE = ITEMS.register("magic_table", () -> new BlockItem(BlockReg.MAGIC_TABLE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart", WardenHeart::new);
-    public static final RegistryObject<Item> THE_VESSEL_OF_THE_HEART = ITEMS.register("the_vessel_of_the_heart", TheVesselOfTheHeart::new);
-    public static final RegistryObject<Item> HEART_TOXIC = ITEMS.register("heart_toxic", HeartToxic::new);
     public static final RegistryObject<Item> JADEITE = ITEMS.register("jadeite_gem", Jadeite::new);
     public static final RegistryObject<Item> JADEITE_PICKAXE = ITEMS.register("jadeite_pickaxe", JadeitePickaxe::new);
     public static final RegistryObject<Item> JADEITE_AXE = ITEMS.register("jadeite_axe", JadeiteAxe::new);
@@ -69,6 +67,11 @@ public class ItemReg {
     public static final RegistryObject<Item> NETHERITE_DAGGER = ITEMS.register("netherite_dagger", () -> new DaggerItem(Tiers.NETHERITE, 1.8f, -2, new Item.Properties()));
     public static final RegistryObject<Item> RUBY_DAGGER = ITEMS.register("ruby_dagger", () -> new DaggerItem(ItemTiers.RUBY, 1.8f, -2, new Item.Properties()));
     public static final RegistryObject<Item> JADEITE_DAGGER = ITEMS.register("jadeite_dagger", () -> new DaggerItem(ItemTiers.JADEITE, 1.8f, -2, new Item.Properties()));
-
+    public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart", WardenHeart::new);
+    public static final RegistryObject<Item> MAGIC_STONE = ITEMS.register("magic_stone", MagicStone::new);
+    public static final RegistryObject<Item> MAGIC_TABLE = ITEMS.register("magic_table", () -> new BlockItem(BlockReg.MAGIC_TABLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> THE_VESSEL_OF_THE_HEART = ITEMS.register("the_vessel_of_the_heart", TheVesselOfTheHeart::new);
+    public static final RegistryObject<Item> HEART_TOXIC = ITEMS.register("heart_toxic", HeartToxic::new);
+    public static final RegistryObject<Item> XP_BOOK = ITEMS.register("xp_book", XpBook::new);
 
 }

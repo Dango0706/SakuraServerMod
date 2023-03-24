@@ -1,4 +1,4 @@
-// 1.19.3	2023-03-23T12:15:09.8785352	Recipes
+// 1.19.3	2023-03-24T11:54:09.0429625	Recipes
 11874781e3d688d62c581398a614acb89a160216 data/minecraft/advancements/recipes/misc/deepslate_jadeite_blast.json
 ede397689d0c19dd5bd4c01ddc90c44b670d2f92 data/minecraft/advancements/recipes/misc/deepslate_jadeite_smelting.json
 a33ba1ffe4f6578d54421eaffab3a725a595f742 data/minecraft/advancements/recipes/misc/deepslate_ruby_blast.json
@@ -35,6 +35,7 @@ da913cc323abc6db13275029511d838f8565e0ac data/sakura/advancements/recipes/misc/j
 3ffd482828315c451f09b9ba76d5bdc2bb8063ef data/sakura/advancements/recipes/misc/magic_table.json
 e8b348a670bd05b762665967e11d047a4848e6c8 data/sakura/advancements/recipes/misc/ruby.json
 6d933158dbfca0d7a48e5a3e77b6dd750d5ca0d3 data/sakura/advancements/recipes/misc/the_vessel_of_the_heart.json
+d1af9505aaaebaa64aee387dec12fc2ca2eec637 data/sakura/advancements/recipes/misc/xp_book.json
 e74f030260201c3bc43bace6cf6d0e95a78b6a11 data/sakura/advancements/recipes/tools/jadeite_axe.json
 9af46ccaf84e08dff2673483a85b07c8e172d6f4 data/sakura/advancements/recipes/tools/jadeite_hoe.json
 d8a0b558202591be1ada5528dbdccb8dfdb94994 data/sakura/advancements/recipes/tools/jadeite_pickaxe.json
@@ -79,3 +80,4 @@ e496a3b488d27962af8555c81f0bfaf43cae11b5 data/sakura/recipes/ruby_sword.json
 9df041499637bb379181aeef494a995573328e0a data/sakura/recipes/stone_dagger.json
 ae664d802fe30c124f7979078a3e03559fa9ee5e data/sakura/recipes/the_vessel_of_the_heart.json
 da23bf2d0ec531947993b966fa1c6aa8ab34bbb7 data/sakura/recipes/wooden_dagger.json
+44b1ccaac18e1c7fa8fdff924da3bc2161a8de0d data/sakura/recipes/xp_book.json
