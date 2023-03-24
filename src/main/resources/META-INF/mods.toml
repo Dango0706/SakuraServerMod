@@ -44,10 +44,11 @@ authors="团子" #optional
 description='''
 这是为樱花服务器制作的模组
 
-群:xxxx
+群:776973565
 
 感谢游玩!
 
+内测中版本!
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.sakura]] #optional

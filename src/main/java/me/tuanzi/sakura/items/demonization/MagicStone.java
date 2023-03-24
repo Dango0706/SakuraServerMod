@@ -78,7 +78,8 @@ public class MagicStone extends Item {
                     }
                     //站立
                     if (player.getPose() == Pose.STANDING) {
-                        if (player.experienceLevel < 50 && !player.isCreative()) {
+                        int needXP = 30;
+                        if (player.experienceLevel < needXP && !player.isCreative()) {
                             ServerPlayer serverPlayer = (ServerPlayer) player;
                             serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.empty().append("§c古老的注魔桌没有回应你!好像是经验等级不足...")));
                             //todo:弹开效果
@@ -88,7 +89,7 @@ public class MagicStone extends Item {
                             return InteractionResult.SUCCESS;
                         } else {
                             if (!player.isCreative())
-                                player.experienceLevel -= 50;
+                                player.experienceLevel -= needXP;
                         }
                         Level level = use.getLevel();
                         //抽奖...

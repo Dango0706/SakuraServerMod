@@ -304,6 +304,17 @@ public class Recipes extends RecipeProvider {
                 .define('b', Items.STICK)
                 .unlockedBy("netherite_dagger", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.JADEITE.get()))
                 .save(p_251297_);
+        //经验书
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemReg.XP_BOOK.get())
+                .pattern("aca")
+                .pattern("dbd")
+                .pattern("aca")
+                .define('a', Items.EMERALD)
+                .define('b', Items.BOOK)
+                .define('c', Items.ENDER_PEARL)
+                .define('d', Items.LAPIS_LAZULI)
+                .unlockedBy("xp_book", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BOOK))
+                .save(p_251297_);
 
 
     }
