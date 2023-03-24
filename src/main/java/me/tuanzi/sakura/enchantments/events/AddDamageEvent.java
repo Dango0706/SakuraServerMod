@@ -15,8 +15,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Random;
 
-import static me.tuanzi.sakura.SakuraMain.LOGGER;
-
 
 @Mod.EventBusSubscriber()
 public class AddDamageEvent {
@@ -140,10 +138,10 @@ public class AddDamageEvent {
             //最后添加伤害
             event.setAmount(event.getAmount() + damage);
             //debug
-            LOGGER.info("计算前总物理伤害:" + (event.getAmount()));
+//            LOGGER.info("计算前总物理伤害:" + (event.getAmount()));
             //减去魔法伤害
             event.setAmount(event.getAmount() - magicDamage);
-            LOGGER.info("计算前总伤害(-魔法伤害):" + (event.getAmount()));
+//            LOGGER.info("计算前总伤害(-魔法伤害):" + (event.getAmount()));
 
             //最后减去伤害
             event.setAmount(event.getAmount() - reduceDamage);
@@ -151,6 +149,6 @@ public class AddDamageEvent {
         }
 
         //debug
-        LOGGER.info("计算前总伤害:" + (event.getAmount()));
+//        LOGGER.info("计算前总伤害:" + (event.getAmount()));
     }
 }

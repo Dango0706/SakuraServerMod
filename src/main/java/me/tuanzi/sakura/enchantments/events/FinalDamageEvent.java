@@ -10,7 +10,6 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static me.tuanzi.sakura.SakuraMain.LOGGER;
 import static me.tuanzi.sakura.effects.EffectReg.SURRENDER;
 import static me.tuanzi.sakura.enchantments.events.AddDamageEvent.isAddMagicDamage;
 import static me.tuanzi.sakura.enchantments.events.AddDamageEvent.magicDamage;
@@ -63,6 +62,6 @@ public class FinalDamageEvent {
             }
         }
         //debug
-        LOGGER.info("计算后总伤害:" + (event.getAmount()));
+//        LOGGER.info("计算后总伤害:" + (event.getAmount()));
     }
 }
