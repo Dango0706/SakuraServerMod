@@ -1,5 +1,6 @@
 package me.tuanzi.sakura.datagen;
 
+import me.tuanzi.sakura.items.tiered_item.HalberdItem;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -39,6 +40,8 @@ public class ItemModel extends ItemModelProvider {
     @Override
     protected void registerModels() {
         Set<Item> items = getItems();
+        //跳过战戟
+        skipItems.addAll(items.stream().filter(item -> item instanceof HalberdItem).toList());
 
         items.removeAll(skipItems);
         registerItemBlock(items.stream()

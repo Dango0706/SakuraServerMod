@@ -15,6 +15,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Random;
 
+import static me.tuanzi.sakura.SakuraMain.LOGGER;
+
 
 @Mod.EventBusSubscriber()
 public class AddDamageEvent {
@@ -39,8 +41,8 @@ public class AddDamageEvent {
         //(有伤害者)伤害计算
         if (event.getSource().getEntity() instanceof LivingEntity abuser && !abuser.level.isClientSide()) {
             ItemStack mainHand = abuser.getMainHandItem();
-            //是匕首:
-            if (mainHand.getItem() instanceof DaggerItem) {
+            //是匕首:(增加基础伤害)
+            if (mainHand.getItem() instanceof DaggerItem daggerItem) {
                 boolean addDamage = true;
                 for (ItemStack itemStack : victim.getArmorSlots()) {
                     if (itemStack.getItem() instanceof ArmorItem item) {
@@ -51,7 +53,7 @@ public class AddDamageEvent {
                     }
                 }
                 if (addDamage)
-                    damage += event.getAmount();
+                    damage += daggerItem.getDamage();
             }
 
             //刺骨
@@ -138,10 +140,10 @@ public class AddDamageEvent {
             //最后添加伤害
             event.setAmount(event.getAmount() + damage);
             //debug
-//            LOGGER.info("计算前总物理伤害:" + (event.getAmount()));
+            LOGGER.debug("计算前总物理伤害:" + (event.getAmount()));
             //减去魔法伤害
             event.setAmount(event.getAmount() - magicDamage);
-//            LOGGER.info("计算前总伤害(-魔法伤害):" + (event.getAmount()));
+            LOGGER.debug("计算前总伤害(-魔法伤害):" + (event.getAmount()));
 
             //最后减去伤害
             event.setAmount(event.getAmount() - reduceDamage);
@@ -149,6 +151,6 @@ public class AddDamageEvent {
         }
 
         //debug
-//        LOGGER.info("计算前总伤害:" + (event.getAmount()));
+        LOGGER.debug("计算前总伤害:" + (event.getAmount()));
     }
 }

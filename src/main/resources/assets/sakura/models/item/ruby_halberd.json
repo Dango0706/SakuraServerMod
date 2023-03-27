@@ -1,0 +1,6 @@
+{
+  "parent":"sakura:item/wooden_halberd",
+  "textures": {
+    "layer0":"sakura:item/ruby_halberd"
+  }
+}

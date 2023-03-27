@@ -239,6 +239,15 @@ public class Recipes extends RecipeProvider {
                 .define('c', ItemReg.WARDEN_HEART.get())
                 .unlockedBy("magic_table", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.WARDEN_HEART.get()))
                 .save(p_251297_);
+        //长杆
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.POLE.get())
+                .pattern("ab ")
+                .pattern("a  ")
+                .pattern("ab ")
+                .define('a', Items.STICK)
+                .define('b', Items.STRING)
+                .unlockedBy("pole", InventoryChangeTrigger.TriggerInstance.hasItems(Items.STICK))
+                .save(p_251297_);
         //匕首
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.WOODEN_DAGGER.get())
                 .pattern("   ")
@@ -304,6 +313,72 @@ public class Recipes extends RecipeProvider {
                 .define('b', Items.STICK)
                 .unlockedBy("netherite_dagger", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.JADEITE.get()))
                 .save(p_251297_);
+        //战戟
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.WOODEN_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', Items.OAK_PLANKS)
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("wooden_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.STONE_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', Items.COBBLESTONE)
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("stone_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.IRON_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', Items.IRON_INGOT)
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("iron_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.GOLD_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', Items.GOLD_INGOT)
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("gold_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.DIAMOND_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', Items.DIAMOND)
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("diamond_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.NETHERITE_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', Items.NETHERITE_INGOT)
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("netherite_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.RUBY_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', ItemReg.RUBY.get())
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("ruby_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ItemReg.JADEITE_HALBERD.get())
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("ab ")
+                .define('a', ItemReg.JADEITE.get())
+                .define('b', ItemReg.POLE.get())
+                .unlockedBy("jadeite_halberd", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
+                .save(p_251297_);
+
         //经验书
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemReg.XP_BOOK.get())
                 .pattern("aca")
@@ -315,8 +390,15 @@ public class Recipes extends RecipeProvider {
                 .define('d', Items.LAPIS_LAZULI)
                 .unlockedBy("xp_book", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BOOK))
                 .save(p_251297_);
-
-
+        //电梯
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemReg.ELEVATOR.get())
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .define('a', Items.IRON_BLOCK)
+                .define('b', Items.ENDER_PEARL)
+                .unlockedBy("elevator", InventoryChangeTrigger.TriggerInstance.hasItems(Items.ENDER_PEARL))
+                .save(p_251297_);
     }
 
 

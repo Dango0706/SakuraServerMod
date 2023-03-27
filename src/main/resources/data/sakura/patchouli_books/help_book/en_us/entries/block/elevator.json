@@ -1,0 +1,41 @@
+{
+  "name": "电梯 ",
+  "icon": "sakura:elevator",
+  "category": "sakura:block",
+  "pages": [
+    "简单易用的电梯,在其上面跳跃即可传送至上面的电梯,蹲下即可传送至下面的电梯",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:elevator",
+      "text": "后一页有简单的摆法."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "简单的电梯",
+      "multiblock": {
+        "pattern": [
+          [
+            "a"
+          ],
+          [
+            " "
+          ],
+          [
+            " "
+          ],
+          [
+            " "
+          ],
+          [
+            "0"
+          ]
+        ],
+        "mapping": {
+          "0": "sakura:elevator",
+          "a": "sakura:elevator"
+        }
+      }
+    }
+  ]
+}

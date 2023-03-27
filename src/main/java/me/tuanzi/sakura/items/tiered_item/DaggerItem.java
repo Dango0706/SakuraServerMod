@@ -2,8 +2,12 @@ package me.tuanzi.sakura.items.tiered_item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -11,13 +15,20 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import static me.tuanzi.sakura.utils.Utils.*;
+import java.util.List;
+
+import static me.tuanzi.sakura.utils.Utils.DAGGER_ITEM_BASE_ATTACK_RANGE_UUID;
 import static net.minecraftforge.common.ForgeMod.ATTACK_RANGE;
 
 @Mod.EventBusSubscriber
@@ -33,8 +44,8 @@ public class DaggerItem extends TieredItem implements Vanishable {
         super(pTier, pProperties);
         this.attackDamage = pAttackDamageModifier + pTier.getAttackDamageBonus();
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(DAGGER_ITEM_BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(DAGGER_ITEM_BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
         builder.put(ATTACK_RANGE.get(), new AttributeModifier(DAGGER_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", -0.5, AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
     }
@@ -100,5 +111,47 @@ public class DaggerItem extends TieredItem implements Vanishable {
         return net.minecraftforge.common.ToolActions.DEFAULT_SWORD_ACTIONS.contains(toolAction);
     }
 
+    /**
+     * Get a bounding box ({@link AABB}) of a sweep attack.
+     *
+     * @param stack  the stack held by the player.
+     * @param player the performing the attack the attack.
+     * @param target the entity targeted by the attack.
+     * @return the bounding box.
+     */
+    @Override
+    public @NotNull AABB getSweepHitBox(@NotNull ItemStack stack, @NotNull Player player, @NotNull Entity target) {
+        return target.getBoundingBox().inflate(0.7D, 0.25D, 0.7D);
+    }
 
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pTooltipComponents.add(Component.empty().append("刺心").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD));
+        if(Screen.hasShiftDown()){
+            pTooltipComponents.add(Component.empty().append("-对未穿胸甲敌人造成200%基础伤害").withStyle(ChatFormatting.GRAY));
+        }
+        if(!Screen.hasShiftDown())
+        {
+            pTooltipComponents.add(Component.empty().append("按shift查看详细").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
+        }
+
+    }
+
+    /**
+     * Checks whether an item can be enchanted with a certain enchantment. This
+     * applies specifically to enchanting an item in the enchanting table and is
+     * called when retrieving the list of possible enchantments for an item.
+     * Enchantments may additionally (or exclusively) be doing their own checks in
+     * {@link Enchantment#canApplyAtEnchantingTable(ItemStack)};
+     * check the individual implementation for reference. By default this will check
+     * if the enchantment type is valid for this item type.
+     *
+     * @param stack       the item stack to be enchanted
+     * @param enchantment the enchantment to be applied
+     * @return true if the enchantment can be applied to this item
+     */
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.category == EnchantmentCategory.WEAPON ;
+    }
 }

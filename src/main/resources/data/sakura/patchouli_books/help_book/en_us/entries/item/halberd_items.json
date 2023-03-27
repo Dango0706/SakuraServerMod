@@ -1,0 +1,14 @@
+{
+  "name": "战戟",
+  "icon": "sakura:wooden_halberd",
+  "category": "sakura:item",
+  "pages": [
+    "战戟,强大的新武器的选择!$(br)拥有强大的伤害和范围,但他是双手武器,无法举盾!$(br)和斧子一样,会禁止敌方的盾牌几秒钟",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:wooden_halberd",
+      "recipe2": "sakura:netherite_halberd"
+    }
+  ]
+}

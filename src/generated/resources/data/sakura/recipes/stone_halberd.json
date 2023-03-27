@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "minecraft:cobblestone"
+    },
+    "b": {
+      "item": "sakura:pole"
+    }
+  },
+  "pattern": [
+    "aa ",
+    "aa ",
+    "ab "
+  ],
+  "result": {
+    "item": "sakura:stone_halberd"
+  }
+}

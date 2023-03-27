@@ -1,6 +1,7 @@
 package me.tuanzi.sakura.blocks;
 
 import me.tuanzi.sakura.blocks.demonization.MagicTable;
+import me.tuanzi.sakura.blocks.functional.Elevator;
 import me.tuanzi.sakura.blocks.jadeite.DeepJadeiteOre;
 import me.tuanzi.sakura.blocks.jadeite.JadeiteBlock;
 import me.tuanzi.sakura.blocks.ruby.DeepRubyOre;
@@ -21,5 +22,6 @@ public class BlockReg {
     public static final RegistryObject<Block> DEEP_JADEITE_ORE = BLOCKS.register("deepslate_jadeite_ore", DeepJadeiteOre::new);
     public static final RegistryObject<Block> JADEITE_BLOCK = BLOCKS.register("jadeite_block", JadeiteBlock::new);
     public static final RegistryObject<Block> MAGIC_TABLE = BLOCKS.register("magic_table", MagicTable::new);
+    public static final RegistryObject<Block> ELEVATOR = BLOCKS.register("elevator", Elevator::new);
 
 }

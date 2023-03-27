@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "sakura:block/elevator",
+    "up": "sakura:block/elevator",
+    "north": "sakura:block/elevator",
+    "east": "sakura:block/elevator",
+    "south": "sakura:block/elevator",
+    "west": "sakura:block/elevator",
+    "particle": "sakura:block/elevator"
+  },
+  "render_type": "solid"
+}

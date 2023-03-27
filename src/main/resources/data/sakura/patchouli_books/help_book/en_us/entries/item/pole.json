@@ -1,0 +1,13 @@
+{
+  "name": "长杆",
+  "icon": "sakura:pole",
+  "category": "sakura:item",
+  "pages": [
+    "新型武器的制作材料,一般用于制作长版武器",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:pole"
+    }
+  ]
+}

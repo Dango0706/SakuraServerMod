@@ -1,7 +1,8 @@
-// 1.19.3	2023-03-24T11:10:35.0472799	Item Models: sakura
+// 1.19.3	2023-03-27T15:40:16.0918721	Item Models: sakura
 e7abcd7ad4caae09765de1fade156708f8b3ffa6 assets/sakura/models/item/deepslate_jadeite_ore.json
 754850246a50e2e6ff73085b9bd5f2853400473c assets/sakura/models/item/deepslate_ruby_ore.json
 8be1cd918c929f1a3ff324dea72e8a1a9171a86d assets/sakura/models/item/diamond_dagger.json
+84b55cb9e857bf865dec4d7a5f516c620bcd2c6d assets/sakura/models/item/elevator.json
 5e80512b96fdc91049a97e457572ce524a80768e assets/sakura/models/item/gold_dagger.json
 30908c75c59f2e77ab9970c7e8c4a53a056ec0f5 assets/sakura/models/item/heart_toxic.json
 3eec87bb91125f967bc19b74e1d5533f1865de84 assets/sakura/models/item/iron_dagger.json
@@ -20,6 +21,7 @@ f1b6569e75eb6397ccbb8338eea8a0dd033e2b58 assets/sakura/models/item/jadeite_shove
 fb84fee3986ae8915831a4495c949032d3cc9d4d assets/sakura/models/item/magic_stone.json
 e4ac0363072dd70374ff47575380e962e28d226c assets/sakura/models/item/magic_table.json
 b0ce401bd20d173f7e74e2f6a5d9d6f110290b04 assets/sakura/models/item/netherite_dagger.json
+1c488abb77a41dea8fc4bcf7ad006dfb9a45c766 assets/sakura/models/item/pole.json
 6e582c4a861c0a3b7131eda60ec9122e665aca77 assets/sakura/models/item/ruby.json
 bb86cafe113df7582c9de32c11f90a7edea87b58 assets/sakura/models/item/ruby_axe.json
 741cf74163846a00ee966685047c9a99b0ef6d14 assets/sakura/models/item/ruby_block.json

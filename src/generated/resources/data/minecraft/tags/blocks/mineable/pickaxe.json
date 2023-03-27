@@ -1,10 +1,11 @@
 {
   "values": [
-    "sakura:deepslate_ruby_ore",
-    "sakura:deepslate_jadeite_ore",
-    "sakura:ruby_block",
-    "sakura:jadeite_block",
     "sakura:ruby_ore",
-    "sakura:magic_table"
+    "sakura:ruby_block",
+    "sakura:elevator",
+    "sakura:magic_table",
+    "sakura:jadeite_block",
+    "sakura:deepslate_ruby_ore",
+    "sakura:deepslate_jadeite_ore"
   ]
 }

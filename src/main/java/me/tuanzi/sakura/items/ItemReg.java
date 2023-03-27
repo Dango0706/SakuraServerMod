@@ -9,6 +9,7 @@ import me.tuanzi.sakura.items.functional.XpBook;
 import me.tuanzi.sakura.items.jadeite.*;
 import me.tuanzi.sakura.items.ruby.*;
 import me.tuanzi.sakura.items.tiered_item.DaggerItem;
+import me.tuanzi.sakura.items.tiered_item.HalberdItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
@@ -28,7 +29,7 @@ import static me.tuanzi.sakura.SakuraMain.MODID;
 public class ItemReg {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-
+    //红宝石
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby", Ruby::new);
     public static final RegistryObject<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe", RubyPickaxe::new);
     public static final RegistryObject<Item> RUBY_AXE = ITEMS.register("ruby_axe", RubyAxe::new);
@@ -40,11 +41,10 @@ public class ItemReg {
     public static final RegistryObject<Item> RUBY_CHESTPLATE = ITEMS.register("ruby_chestplate", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.CHEST, (new Item.Properties())));
     public static final RegistryObject<Item> RUBY_LEGGINGS = ITEMS.register("ruby_leggings", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.LEGS, (new Item.Properties())));
     public static final RegistryObject<Item> RUBY_BOOTS = ITEMS.register("ruby_boots", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.FEET, (new Item.Properties())));
-//    public static final TagKey<Item> RUBY_ORE_TAG = TagKey.create(Registries.ITEM, new ResourceLocation(MODID, "ruby_ore"));
-
     public static final RegistryObject<Item> RUBY_ORE = ITEMS.register("ruby_ore", () -> new BlockItem(BlockReg.RUBY_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DEEP_RUBY_ORE = ITEMS.register("deepslate_ruby_ore", () -> new BlockItem(BlockReg.DEEP_RUBY_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RUBY_BLOCK = ITEMS.register("ruby_block", () -> new BlockItem(BlockReg.RUBY_BLOCK.get(), new Item.Properties()));
+    //翡翠
     public static final RegistryObject<Item> JADEITE = ITEMS.register("jadeite_gem", Jadeite::new);
     public static final RegistryObject<Item> JADEITE_PICKAXE = ITEMS.register("jadeite_pickaxe", JadeitePickaxe::new);
     public static final RegistryObject<Item> JADEITE_AXE = ITEMS.register("jadeite_axe", JadeiteAxe::new);
@@ -58,6 +58,8 @@ public class ItemReg {
     public static final RegistryObject<Item> JADEITE_LEGGINGS = ITEMS.register("jadeite_leggings", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.LEGS, (new Item.Properties())));
     public static final RegistryObject<Item> JADEITE_BOOTS = ITEMS.register("jadeite_boots", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.FEET, (new Item.Properties())));
 
+    //tiered_item
+    public static final RegistryObject<Item> POLE = ITEMS.register("pole", () -> new Item(new Item.Properties()));
     //dagger
     public static final RegistryObject<Item> WOODEN_DAGGER = ITEMS.register("wooden_dagger", () -> new DaggerItem(Tiers.WOOD, 1.8f, -2, new Item.Properties()));
     public static final RegistryObject<Item> STONE_DAGGER = ITEMS.register("stone_dagger", () -> new DaggerItem(Tiers.STONE, 1.8f, -2, new Item.Properties()));
@@ -67,11 +69,22 @@ public class ItemReg {
     public static final RegistryObject<Item> NETHERITE_DAGGER = ITEMS.register("netherite_dagger", () -> new DaggerItem(Tiers.NETHERITE, 1.8f, -2, new Item.Properties()));
     public static final RegistryObject<Item> RUBY_DAGGER = ITEMS.register("ruby_dagger", () -> new DaggerItem(ItemTiers.RUBY, 1.8f, -2, new Item.Properties()));
     public static final RegistryObject<Item> JADEITE_DAGGER = ITEMS.register("jadeite_dagger", () -> new DaggerItem(ItemTiers.JADEITE, 1.8f, -2, new Item.Properties()));
+    //halberd
+    public static final RegistryObject<Item> WOODEN_HALBERD = ITEMS.register("wooden_halberd", () -> new HalberdItem(Tiers.WOOD, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> STONE_HALBERD = ITEMS.register("stone_halberd", () -> new HalberdItem(Tiers.STONE, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> IRON_HALBERD = ITEMS.register("iron_halberd", () -> new HalberdItem(Tiers.IRON, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_HALBERD = ITEMS.register("gold_halberd", () -> new HalberdItem(Tiers.GOLD, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_HALBERD = ITEMS.register("diamond_halberd", () -> new HalberdItem(Tiers.DIAMOND, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_HALBERD = ITEMS.register("netherite_halberd", () -> new HalberdItem(Tiers.NETHERITE, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_HALBERD = ITEMS.register("ruby_halberd", () -> new HalberdItem(ItemTiers.RUBY, 5f, -2.8f, new Item.Properties()));
+    public static final RegistryObject<Item> JADEITE_HALBERD = ITEMS.register("jadeite_halberd", () -> new HalberdItem(ItemTiers.JADEITE, 5f, -2.8f, new Item.Properties()));
+    //原材料物品
     public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart", WardenHeart::new);
     public static final RegistryObject<Item> MAGIC_STONE = ITEMS.register("magic_stone", MagicStone::new);
     public static final RegistryObject<Item> MAGIC_TABLE = ITEMS.register("magic_table", () -> new BlockItem(BlockReg.MAGIC_TABLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> THE_VESSEL_OF_THE_HEART = ITEMS.register("the_vessel_of_the_heart", TheVesselOfTheHeart::new);
     public static final RegistryObject<Item> HEART_TOXIC = ITEMS.register("heart_toxic", HeartToxic::new);
     public static final RegistryObject<Item> XP_BOOK = ITEMS.register("xp_book", XpBook::new);
+    public static final RegistryObject<Item> ELEVATOR = ITEMS.register("elevator", () -> new BlockItem(BlockReg.ELEVATOR.get(), new Item.Properties()));
 
 }
