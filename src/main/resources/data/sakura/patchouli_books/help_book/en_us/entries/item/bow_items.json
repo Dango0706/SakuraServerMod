@@ -1,0 +1,14 @@
+{
+  "name": "弓",
+  "icon": "sakura:stone_bow",
+  "category": "sakura:item",
+  "pages": [
+    "弓,更多的弓!$(br)和原版一样,拉弓!射箭!",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:stone_bow",
+      "recipe2": "sakura:netherite_bow"
+    }
+  ]
+}

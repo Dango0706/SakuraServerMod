@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    },
+    "c": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " ac",
+    "b c",
+    " ac"
+  ],
+  "result": {
+    "item": "sakura:diamond_bow"
+  }
+}

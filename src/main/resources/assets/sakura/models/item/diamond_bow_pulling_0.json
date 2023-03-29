@@ -1,0 +1,6 @@
+{
+    "parent": "sakura:item/diamond_bow",
+    "textures": {
+        "layer0": "sakura:item/diamond_bow_pulling_0"
+    }
+}

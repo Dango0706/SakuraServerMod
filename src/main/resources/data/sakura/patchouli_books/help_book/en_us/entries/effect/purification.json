@@ -1,0 +1,18 @@
+{
+  "name": "净化",
+  "icon": "minecraft:potion",
+  "category": "sakura:effect",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "buff属性:增益效果$(br)描述:免疫凋零状态效果$(br)酿造方式:凋零骷髅头+粗制的药水."
+    },    {
+      "type": "patchouli:image",
+      "title": "图标",
+      "border": true,
+      "images": [
+        "sakura:textures/patchouli/purification.png"
+      ]
+    }
+  ]
+}

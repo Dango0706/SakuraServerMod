@@ -1,12 +1,13 @@
 package me.tuanzi.sakura.items;
 
+import me.tuanzi.sakura.effects.PotionReg;
 import me.tuanzi.sakura.enchantments.EnchantmentReg;
 import me.tuanzi.sakura.enchantments.SakuraEnchantment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.EnchantedBookItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -32,12 +33,15 @@ public class SakuraGroup {
 
     static ArrayList<Enchantment> enchantments = new ArrayList<>();
     static ArrayList<Item> items = new ArrayList<>();
+    static ArrayList<Potion> potions = new ArrayList<>();
 
     //添加附魔
     static Class<?> enchantmentRegClass = EnchantmentReg.class;
     static Field[] enchantmentRegClassDeclaredFields = enchantmentRegClass.getDeclaredFields();
     static Class<?> itemRegClass = ItemReg.class;
     static Field[] itemRegClassDeclaredFields = itemRegClass.getDeclaredFields();
+    static Class<?> potionRegClass = PotionReg.class;
+    static Field[] potionRegClassDeclaredFields = potionRegClass.getDeclaredFields();
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void buildContents(CreativeModeTabEvent.Register event) {
@@ -62,6 +66,16 @@ public class SakuraGroup {
                 }
             }
         }
+        for (Field field : potionRegClassDeclaredFields) {
+            if (field.getType() == RegistryObject.class) {
+                try {
+                    RegistryObject<Potion> registryObject = (RegistryObject<Potion>) field.get(null);
+                    potions.add(registryObject.get());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
 
         event.registerCreativeModeTab(new ResourceLocation(MODID, "sakura"), builder ->
@@ -76,6 +90,11 @@ public class SakuraGroup {
                             }
                             for (Enchantment enchantment : enchantments) {
                                 populator.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, enchantment.getMaxLevel())));
+                            }
+                            for(Potion potion : potions){
+                                ItemStack itemStack = new ItemStack(Items.POTION);
+                                PotionUtils.setPotion(itemStack,potion);
+                                populator.accept(itemStack);
                             }
 
                            /* populator.accept(RUBY.get());

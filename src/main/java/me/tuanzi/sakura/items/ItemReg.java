@@ -9,7 +9,9 @@ import me.tuanzi.sakura.items.functional.XpBook;
 import me.tuanzi.sakura.items.jadeite.*;
 import me.tuanzi.sakura.items.ruby.*;
 import me.tuanzi.sakura.items.tiered_item.DaggerItem;
+import me.tuanzi.sakura.items.tiered_item.GreatswordItem;
 import me.tuanzi.sakura.items.tiered_item.HalberdItem;
+import me.tuanzi.sakura.items.tiered_item.SakuraBowItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
@@ -78,6 +80,27 @@ public class ItemReg {
     public static final RegistryObject<Item> NETHERITE_HALBERD = ITEMS.register("netherite_halberd", () -> new HalberdItem(Tiers.NETHERITE, 5f, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> RUBY_HALBERD = ITEMS.register("ruby_halberd", () -> new HalberdItem(ItemTiers.RUBY, 5f, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> JADEITE_HALBERD = ITEMS.register("jadeite_halberd", () -> new HalberdItem(ItemTiers.JADEITE, 5f, -2.8f, new Item.Properties()));
+    //弓
+    public static final RegistryObject<Item> STONE_BOW = ITEMS.register("stone_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(250), 2));
+    public static final RegistryObject<Item> IRON_BOW = ITEMS.register("iron_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(386), 2.5));
+    public static final RegistryObject<Item> GOLD_BOW = ITEMS.register("gold_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(128), 2));
+    public static final RegistryObject<Item> DIAMOND_BOW = ITEMS.register("diamond_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(1536), 3));
+    public static final RegistryObject<Item> NETHERITE_BOW = ITEMS.register("netherite_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(2048), 3.5));
+    public static final RegistryObject<Item> RUBY_BOW = ITEMS.register("ruby_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(128), 2.75));
+    public static final RegistryObject<Item> JADEITE_BOW = ITEMS.register("jadeite_bow", () -> new SakuraBowItem(new Item.Properties().defaultDurability(2536), 3));
+
+    //大剑
+    public static final RegistryObject<Item> WOODEN_GREATSWORD = ITEMS.register("wooden_greatsword", () -> new GreatswordItem(Tiers.WOOD, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> STONE_GREATSWORD = ITEMS.register("stone_greatsword", () -> new GreatswordItem(Tiers.STONE, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> IRON_GREATSWORD = ITEMS.register("iron_greatsword", () -> new GreatswordItem(Tiers.IRON, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_GREATSWORD = ITEMS.register("gold_greatsword", () -> new GreatswordItem(Tiers.GOLD, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_GREATSWORD = ITEMS.register("diamond_greatsword", () -> new GreatswordItem(Tiers.DIAMOND, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_GREATSWORD = ITEMS.register("netherite_greatsword", () -> new GreatswordItem(Tiers.NETHERITE, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_GREATSWORD = ITEMS.register("ruby_greatsword", () -> new GreatswordItem(ItemTiers.RUBY, 3.25f, -2.6f, new Item.Properties()));
+    public static final RegistryObject<Item> JADEITE_GREATSWORD = ITEMS.register("jadeite_greatsword", () -> new GreatswordItem(ItemTiers.JADEITE, 3.25f, -2.6f, new Item.Properties()));
+
+
+
     //原材料物品
     public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart", WardenHeart::new);
     public static final RegistryObject<Item> MAGIC_STONE = ITEMS.register("magic_stone", MagicStone::new);
@@ -86,5 +109,6 @@ public class ItemReg {
     public static final RegistryObject<Item> HEART_TOXIC = ITEMS.register("heart_toxic", HeartToxic::new);
     public static final RegistryObject<Item> XP_BOOK = ITEMS.register("xp_book", XpBook::new);
     public static final RegistryObject<Item> ELEVATOR = ITEMS.register("elevator", () -> new BlockItem(BlockReg.ELEVATOR.get(), new Item.Properties()));
+
 
 }

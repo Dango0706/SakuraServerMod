@@ -5,11 +5,13 @@
 
 贴图来源于网络,侵删.
 
-部分贴图来源:
+### 部分贴图来源:
 
-斯巴达的武器 (Spartan Weaponry):https://www.curseforge.com/minecraft/mc-mods/spartan-weaponry
+Spartan Weaponry:https://www.curseforge.com/minecraft/mc-mods/spartan-weaponry
 
 Warden Loot:https://github.com/nu11une/wardenloot
+
+Lycanites Mobs:https://www.curseforge.com/minecraft/mc-mods/lycanites-mobs
 
 
 

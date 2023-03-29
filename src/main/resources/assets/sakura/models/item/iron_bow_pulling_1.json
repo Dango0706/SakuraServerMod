@@ -1,0 +1,6 @@
+{
+    "parent": "sakura:item/iron_bow",
+    "textures": {
+        "layer0": "sakura:item/iron_bow_pulling_1"
+    }
+}

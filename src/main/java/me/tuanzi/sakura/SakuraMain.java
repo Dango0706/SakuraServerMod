@@ -5,6 +5,7 @@ import me.tuanzi.sakura.blocks.BlockReg;
 import me.tuanzi.sakura.blocks.features.FeatureReg;
 import me.tuanzi.sakura.configs.Config;
 import me.tuanzi.sakura.effects.EffectReg;
+import me.tuanzi.sakura.effects.PotionReg;
 import me.tuanzi.sakura.enchantments.EnchantmentReg;
 import me.tuanzi.sakura.items.ItemReg;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -61,9 +62,11 @@ public class SakuraMain {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.CONFIG);
         EnchantmentReg.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EffectReg.EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        PotionReg.POTIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FeatureReg.PLACEMENT_MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FeatureReg.BIOME_MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemReg.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
         LOGGER.info("加载!");
     }
 

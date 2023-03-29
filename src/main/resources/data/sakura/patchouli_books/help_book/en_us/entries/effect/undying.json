@@ -1,0 +1,18 @@
+{
+  "name": "不死",
+  "icon": "minecraft:potion",
+  "category": "sakura:effect",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "buff属性:增益效果$(br)描述:期间就好像自己拿着不死图腾一样,可以免除一次死亡!$(br)酿造方式:不死图腾+粗制的药水."
+    },    {
+      "type": "patchouli:image",
+      "title": "图标",
+      "border": true,
+      "images": [
+        "sakura:textures/patchouli/undying.png"
+      ]
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class SteelBody extends MobEffect {
     public SteelBody() {
-        super(MobEffectCategory.BENEFICIAL, 0xff0000);
+        super(MobEffectCategory.BENEFICIAL, 14872972);
     }
 
 }

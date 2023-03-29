@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 public class ShatteredArmor extends MobEffect {
     public ShatteredArmor() {
-        super(MobEffectCategory.NEUTRAL, 0xff0000);
+        super(MobEffectCategory.NEUTRAL, 11902108);
     }
 
 }

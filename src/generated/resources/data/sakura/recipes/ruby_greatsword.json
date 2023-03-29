@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "sakura:ruby"
+    },
+    "b": {
+      "item": "sakura:pole"
+    }
+  },
+  "pattern": [
+    " a ",
+    " a ",
+    " b "
+  ],
+  "result": {
+    "item": "sakura:ruby_greatsword"
+  }
+}

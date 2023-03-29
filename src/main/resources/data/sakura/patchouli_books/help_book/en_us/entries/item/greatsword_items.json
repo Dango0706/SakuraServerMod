@@ -1,0 +1,14 @@
+{
+  "name": "大剑",
+  "icon": "sakura:wooden_greatsword",
+  "category": "sakura:item",
+  "pages": [
+    "大剑,更强大的范围杀伤性武器!$(br)拥有不俗的伤害和横扫范围,但他是双手武器,副手没法拿东西了!$(br)和剑一样,攻击时有横扫效果,且横扫范围比剑更大!",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:wooden_greatsword",
+      "recipe2": "sakura:netherite_greatsword"
+    }
+  ]
+}

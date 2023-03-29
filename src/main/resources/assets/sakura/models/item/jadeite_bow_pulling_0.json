@@ -1,0 +1,6 @@
+{
+    "parent": "sakura:item/jadeite_bow",
+    "textures": {
+        "layer0": "sakura:item/jadeite_bow_pulling_0"
+    }
+}

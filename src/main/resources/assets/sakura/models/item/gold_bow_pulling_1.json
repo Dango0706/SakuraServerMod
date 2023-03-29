@@ -1,0 +1,6 @@
+{
+    "parent": "sakura:item/gold_bow",
+    "textures": {
+        "layer0": "sakura:item/gold_bow_pulling_1"
+    }
+}

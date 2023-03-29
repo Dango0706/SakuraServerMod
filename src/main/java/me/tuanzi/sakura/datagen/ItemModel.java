@@ -1,6 +1,8 @@
 package me.tuanzi.sakura.datagen;
 
+import me.tuanzi.sakura.items.tiered_item.GreatswordItem;
 import me.tuanzi.sakura.items.tiered_item.HalberdItem;
+import me.tuanzi.sakura.items.tiered_item.SakuraBowItem;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -42,6 +44,10 @@ public class ItemModel extends ItemModelProvider {
         Set<Item> items = getItems();
         //跳过战戟
         skipItems.addAll(items.stream().filter(item -> item instanceof HalberdItem).toList());
+        //跳过弓
+        skipItems.addAll(items.stream().filter(item -> item instanceof SakuraBowItem).toList());
+        //跳过大剑
+        skipItems.addAll(items.stream().filter(item -> item instanceof GreatswordItem).toList());
 
         items.removeAll(skipItems);
         registerItemBlock(items.stream()

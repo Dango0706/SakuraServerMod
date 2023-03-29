@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "buff属性:增益效果$(br)描述:增加2*等级的护甲值"
+      "text": "buff属性:增益效果$(br)描述:增加2*等级的护甲值$(br)酿造方式:钻石+粗制的药水."
     },    {
       "type": "patchouli:image",
       "title": "图标",

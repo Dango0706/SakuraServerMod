@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class Fasten extends MobEffect {
     public Fasten() {
-        super(MobEffectCategory.NEUTRAL, 0xff0000);
+        super(MobEffectCategory.NEUTRAL, 0);
     }
 
     @Override

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "b": {
+      "item": "sakura:pole"
+    }
+  },
+  "pattern": [
+    " a ",
+    " a ",
+    " b "
+  ],
+  "result": {
+    "item": "sakura:netherite_greatsword"
+  }
+}
