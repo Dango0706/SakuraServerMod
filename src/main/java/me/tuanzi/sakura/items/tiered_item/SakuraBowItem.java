@@ -1,5 +1,6 @@
 package me.tuanzi.sakura.items.tiered_item;
 
+import me.tuanzi.sakura.enchantments.EnchantmentReg;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -10,6 +11,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+
+import static me.tuanzi.sakura.enchantments.bow.MultipleShoot.spawnArrow;
 
 public class SakuraBowItem extends BowItem {
 
@@ -49,6 +53,7 @@ public class SakuraBowItem extends BowItem {
                         }
                         //添加伤害
                         abstractarrow.setBaseDamage(abstractarrow.getBaseDamage() + level * 2);
+
                         int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, pStack);
                         if (j > 0) {
                             abstractarrow.setBaseDamage(abstractarrow.getBaseDamage() + (double) j * 0.5D + 0.5D);
@@ -69,7 +74,29 @@ public class SakuraBowItem extends BowItem {
                         if (flag1 || player.getAbilities().instabuild && (itemstack.is(Items.SPECTRAL_ARROW) || itemstack.is(Items.TIPPED_ARROW))) {
                             abstractarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                         }
-
+                        //多重射击
+                        Vec3 playerDirection = pEntityLiving.getLookAngle();
+                        for (int im = 0; im < pStack.getEnchantmentLevel(EnchantmentReg.MULTIPLE_SHOOT.get()); im++) {
+                            float x;
+                            float y;
+                            float z;
+                            float fm = 6 - pStack.getEnchantmentLevel(EnchantmentReg.MULTIPLE_SHOOT.get());
+                            x = pEntityLiving.getRandom().nextFloat() * fm;
+                            y = pEntityLiving.getRandom().nextFloat() * fm;
+                            z = pEntityLiving.getRandom().nextFloat() * fm;
+                            if (pEntityLiving.getRandom().nextBoolean()) {
+                                x *= -1;
+                            }
+                            if (pEntityLiving.getRandom().nextBoolean()) {
+                                y *= -1;
+                            }
+                            if (pEntityLiving.getRandom().nextBoolean()) {
+                                z *= -1;
+                            }
+                            Vec3 newVec3 = playerDirection.add(x, y, z);
+                            spawnArrow(abstractarrow, arrowitem, pLevel, newVec3);
+                        }
+                        //最终射出的箭
                         pLevel.addFreshEntity(abstractarrow);
                     }
 
@@ -89,9 +116,8 @@ public class SakuraBowItem extends BowItem {
 
     @Override
     public int getDefaultProjectileRange() {
-        return (int) Math.round (15 + 5 * level);
+        return (int) Math.round(15 + 5 * level);
     }
-
 
 
 }

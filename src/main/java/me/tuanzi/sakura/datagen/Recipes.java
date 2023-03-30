@@ -529,6 +529,11 @@ public class Recipes extends RecipeProvider {
                 .define('b', ItemReg.POLE.get())
                 .unlockedBy("elevator", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.POLE.get()))
                 .save(p_251297_);
+        //凋零骷髅头
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.WITHER_SKELETON_SKULL, 1)
+                .requires(ItemReg.WITHER_SKELETON_SKULL_DEBRIS.get(),9)
+                .unlockedBy("wither_skeleton_skull_debris", InventoryChangeTrigger.TriggerInstance.hasItems(ItemReg.WITHER_SKELETON_SKULL_DEBRIS.get()))
+                .save(p_251297_);
 
 
     }

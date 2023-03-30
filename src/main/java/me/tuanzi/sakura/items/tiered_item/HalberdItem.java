@@ -40,7 +40,7 @@ public class HalberdItem extends TieredItem implements Vanishable {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
-        builder.put(ATTACK_RANGE.get(), new AttributeModifier(DAGGER_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", 0.5, AttributeModifier.Operation.ADDITION));
+        builder.put(ATTACK_RANGE.get(), new AttributeModifier(TIERED_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", 0.5, AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
     }
 

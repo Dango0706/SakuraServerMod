@@ -1,0 +1,14 @@
+{
+  "name": "凋零头骨碎片",
+  "icon": "sakura:wither_skeleton_skull_debris",
+  "category": "sakura:item",
+  "pages": [
+    "掉落于凋零骷髅,可以用于合成凋零骷髅头,9个合1个.",
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:wither_skeleton",
+      "scale": "0.9",
+      "text": "有25%的概率杀死凋零骷髅之后掉落,每级抢夺额外增加25%的概率!"
+    }
+  ]
+}

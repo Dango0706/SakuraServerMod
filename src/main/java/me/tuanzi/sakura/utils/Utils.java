@@ -15,7 +15,7 @@ public class Utils {
     public static final UUID SKILLED_UUID = UUID.fromString("be4d456e-983a-02fc-09a1-7e6ccd3fe465");
     public static final UUID DAGGER_ITEM_BASE_ATTACK_DAMAGE_UUID = UUID.fromString("44f0d2e9-808b-eb4c-6196-3297a9be6f3c");
     public static final UUID DAGGER_ITEM_BASE_ATTACK_SPEED_UUID = UUID.fromString("86614fa8-939c-7cf4-5fe4-d2dc7574f90b");
-    public static final UUID DAGGER_ITEM_BASE_ATTACK_RANGE_UUID = UUID.fromString("23295ae3-2d87-809f-248a-a363df94417d");
+    public static final UUID TIERED_ITEM_BASE_ATTACK_RANGE_UUID = UUID.fromString("23295ae3-2d87-809f-248a-a363df94417d");
     public static final UUID ELITE_MOB_SPEED_ADD_UUID = UUID.fromString("55c2706e-1d56-5c5d-a373-7d981f2cc8f3");
     public static final UUID ELITE_MOB_ATTACK_ADD_UUID = UUID.fromString("61d5c620-b52a-7843-5171-ccea8c9971ff");
     public static final UUID ELITE_MOB_KNOCKBACK_RESISTANCE_ADD_UUID = UUID.fromString("70133879-bd2d-e2c1-5d51-c99f69153f79");

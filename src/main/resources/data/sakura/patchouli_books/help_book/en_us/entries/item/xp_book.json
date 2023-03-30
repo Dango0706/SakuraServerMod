@@ -3,6 +3,12 @@
   "icon": "sakura:xp_book",
   "category": "sakura:item",
   "pages": [
-    "一个储存经验的书,最大能存储30级,"
+    "一个储存经验的书,最大能存储30级,",
+    {
+      "type": "patchouli:crafting",
+      "title": "合成配方",
+      "recipe": "sakura:xp_book",
+      "text": "为什么只能存储30级呢..?"
+    }
   ]
 }

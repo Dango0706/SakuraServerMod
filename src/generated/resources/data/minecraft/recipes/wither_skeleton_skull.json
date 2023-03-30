@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    },
+    {
+      "item": "sakura:wither_skeleton_skull_debris"
+    }
+  ],
+  "result": {
+    "item": "minecraft:wither_skeleton_skull"
+  }
+}

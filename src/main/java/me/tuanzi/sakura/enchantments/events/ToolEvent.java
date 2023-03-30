@@ -2,6 +2,7 @@ package me.tuanzi.sakura.enchantments.events;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Pose;
@@ -69,15 +70,17 @@ public class ToolEvent {
             }
         }
         for (BlockPos pos1 : next) {
-            ArrayList<BlockPos> pos2 = rangeBlock(pos1, 5);
-            for (BlockPos pos3 : pos2) {
-                if (maxCount > 0) {
-                    BlockState blockState = level.getBlockState(pos3);
-                    if (blockState.getBlock() == block) {
-                        maxCount--;
-                        count++;
-                        level.destroyBlock(pos3, true);
-
+            BlockState blockState1 = level.getBlockState(pos1);
+            if (blockState1.getBlock() == block) {
+                ArrayList<BlockPos> pos2 = rangeBlock(pos1, 5);
+                for (BlockPos pos3 : pos2) {
+                    if (maxCount > 0) {
+                        BlockState blockState = level.getBlockState(pos3);
+                        if (blockState.getBlock() == block) {
+                            maxCount--;
+                            count++;
+                            level.destroyBlock(pos3, true);
+                        }
                     }
                 }
             }
@@ -87,20 +90,25 @@ public class ToolEvent {
             for (int i = 0; i < damaged - maxCount; i++) {
                 //消耗耐久(自己计算耐久3等..
                 itemStack.hurt(1, RandomSource.create(), (ServerPlayer) player);
-                //消耗饱食度
+                //增加疲劳度
                 exhaustion += 0.5f;
             }
-            while (exhaustion + player.getFoodData().getExhaustionLevel() < 4) {
+            //疲劳度+原有的>4了
+            while (exhaustion + player.getFoodData().getExhaustionLevel() >= 4) {
+                //减4
                 exhaustion -= 4;
+                //减饱食度或饱和
                 if (player.getFoodData().getSaturationLevel() > 0) {
                     player.getFoodData().setSaturation(player.getFoodData().getSaturationLevel() - 1);
                 } else {
                     player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
                 }
             }
+            //<4了那就加上去
             player.getFoodData().setExhaustion(exhaustion + player.getFoodData().getExhaustionLevel());
         }
-        player.sendSystemMessage(Component.empty().append("本次连锁挖了:" + ++count + "个方块"));
+        if (player instanceof ServerPlayer player1)
+            player1.connection.send(new ClientboundSetActionBarTextPacket(Component.empty().append("本次连锁挖了:§b" + ++count + "§r个方块")));
     }
 
     private static ArrayList<BlockPos> rangeBlock(BlockPos pos, int range) {

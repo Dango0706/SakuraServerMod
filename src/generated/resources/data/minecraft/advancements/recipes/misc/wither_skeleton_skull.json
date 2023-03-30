@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:wither_skeleton_skull"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "wither_skeleton_skull_debris": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sakura:ruby_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "wither_skeleton_skull_debris",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:wither_skeleton_skull"
+    ]
+  }
+}

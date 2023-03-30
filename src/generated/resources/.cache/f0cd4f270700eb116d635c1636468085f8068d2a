@@ -1,4 +1,4 @@
-// 1.19.3	2023-03-27T15:40:16.0918721	Item Models: sakura
+// 1.19.3	2023-03-30T15:08:10.8283373	Item Models: sakura
 e7abcd7ad4caae09765de1fade156708f8b3ffa6 assets/sakura/models/item/deepslate_jadeite_ore.json
 754850246a50e2e6ff73085b9bd5f2853400473c assets/sakura/models/item/deepslate_ruby_ore.json
 8be1cd918c929f1a3ff324dea72e8a1a9171a86d assets/sakura/models/item/diamond_dagger.json
@@ -38,5 +38,6 @@ d66b4a9e7cbbc32369d53e66055e81590c325751 assets/sakura/models/item/ruby_sword.js
 f7659fd8fb639817fe04ac1881fdff6c302e2512 assets/sakura/models/item/stone_dagger.json
 7ad38afc92f735e072dfdd97c94afe70ea2ec1a6 assets/sakura/models/item/the_vessel_of_the_heart.json
 74e3c365672a4eb46553207bcb3cd1b480a43f94 assets/sakura/models/item/warden_heart.json
+0bbe5fa2a22948b47f7049bb6199b7a60d5c3561 assets/sakura/models/item/wither_skeleton_skull_debris.json
 1589f34f8a91aba7097673384d481266a9c6b6e7 assets/sakura/models/item/wooden_dagger.json
 d7000a3961f225e638f8277887c9e10f1982a4e8 assets/sakura/models/item/xp_book.json

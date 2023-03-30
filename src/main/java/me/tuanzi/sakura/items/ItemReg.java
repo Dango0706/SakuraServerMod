@@ -109,6 +109,7 @@ public class ItemReg {
     public static final RegistryObject<Item> HEART_TOXIC = ITEMS.register("heart_toxic", HeartToxic::new);
     public static final RegistryObject<Item> XP_BOOK = ITEMS.register("xp_book", XpBook::new);
     public static final RegistryObject<Item> ELEVATOR = ITEMS.register("elevator", () -> new BlockItem(BlockReg.ELEVATOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WITHER_SKELETON_SKULL_DEBRIS = ITEMS.register("wither_skeleton_skull_debris", () -> new Item(new Item.Properties()));
 
 
 }

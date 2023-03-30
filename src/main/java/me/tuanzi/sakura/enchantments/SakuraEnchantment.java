@@ -4,6 +4,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
@@ -71,4 +73,19 @@ public class SakuraEnchantment extends Enchantment {
         return getSakuraRarity() == SakuraRarity.COMMON || getSakuraRarity() == SakuraRarity.UNCOMMON;
     }
 
+
+    /**
+     * Determines if this enchantment can be applied to a specific ItemStack.
+     * 防止原版弓被附魔到还不兼容原版弓的附魔.
+     * 兼容请复写此.
+     *
+     * @param pStack The ItemStack to test.
+     */
+    @Override
+    public boolean canEnchant(ItemStack pStack) {
+        if(this.category == EnchantmentCategory.BOW && pStack.getItem() == Items.BOW){
+            return false;
+        }
+        return true;
+    }
 }
