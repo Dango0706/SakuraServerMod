@@ -55,22 +55,23 @@ public class SakuraEnchantment extends Enchantment {
         return mutablecomponent;
     }
 
-    //不可被附魔台附魔到
+
+    //<=2级的可以被附魔台附魔
     @Override
     public boolean isTreasureOnly() {
-        return true;
+        return this.getSakuraRarity() != SakuraRarity.COMMON && this.getSakuraRarity() != SakuraRarity.UNCOMMON;
     }
 
-    //不可在战利品表出现
+    //<=2级不可在战利品表出现
     @Override
     public boolean isDiscoverable() {
-        return false;
+        return this.getSakuraRarity() == SakuraRarity.COMMON || this.getSakuraRarity() == SakuraRarity.UNCOMMON;
     }
 
-    //<2级的可以被交易
+    //<=2级的可以被交易
     @Override
     public boolean isTradeable() {
-        return getSakuraRarity() == SakuraRarity.COMMON || getSakuraRarity() == SakuraRarity.UNCOMMON;
+        return this.getSakuraRarity() == SakuraRarity.COMMON || this.getSakuraRarity() == SakuraRarity.UNCOMMON;
     }
 
 
@@ -83,9 +84,6 @@ public class SakuraEnchantment extends Enchantment {
      */
     @Override
     public boolean canEnchant(ItemStack pStack) {
-        if(this.category == EnchantmentCategory.BOW && pStack.getItem() == Items.BOW){
-            return false;
-        }
-        return true;
+        return this.category != EnchantmentCategory.BOW || pStack.getItem() != Items.BOW;
     }
 }

@@ -60,11 +60,11 @@ public class SakuraMain {
 
         BlockReg.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.CONFIG);
-        EnchantmentReg.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EffectReg.EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         PotionReg.POTIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FeatureReg.PLACEMENT_MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FeatureReg.BIOME_MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EnchantmentReg.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ItemReg.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         LOGGER.info("加载!");

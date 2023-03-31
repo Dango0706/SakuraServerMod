@@ -1,0 +1,12 @@
+{
+  "name": "钻石无处不在",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[钻石无处不在]$(br)可应用类型:工具$(br)获取方式:$(l:block/magic_table#table)注魔桌$()或附魔台",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(a)不寻常$()$(br)最高附魔等级:$(6)3$(br)$()描述:每挖掘一个石头质的方块时,有5%*等级的概率额外掉落钻石!"
+    }
+  ]
+}

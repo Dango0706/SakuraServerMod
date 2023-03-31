@@ -1,12 +1,11 @@
 package me.tuanzi.sakura.enchantments.sword;
 
+import me.tuanzi.sakura.enchantments.EnchantmentReg;
 import me.tuanzi.sakura.enchantments.SakuraEnchantment;
 import me.tuanzi.sakura.enchantments.SakuraRarity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-
-import static me.tuanzi.sakura.enchantments.EnchantmentReg.LUNAR_BLESSING;
 
 public class ApolloBlessing extends SakuraEnchantment {
     public ApolloBlessing() {
@@ -24,8 +23,8 @@ public class ApolloBlessing extends SakuraEnchantment {
     }
 
     @Override
-    protected boolean checkCompatibility(Enchantment p_44690_) {
-        return p_44690_ != LUNAR_BLESSING.get();
+    protected boolean checkCompatibility(Enchantment pEnch) {
+        return super.checkCompatibility(pEnch) && pEnch != EnchantmentReg.LUNAR_BLESSING.get();
     }
 
     @Override
@@ -47,6 +46,7 @@ public class ApolloBlessing extends SakuraEnchantment {
     public int getMaxCost(int pLevel) {
         return this.getMinCost(pLevel) + 20;
     }
+
 
 
 }

@@ -2,10 +2,12 @@ package me.tuanzi.sakura.items;
 
 import me.tuanzi.sakura.effects.PotionReg;
 import me.tuanzi.sakura.enchantments.EnchantmentReg;
-import me.tuanzi.sakura.enchantments.SakuraEnchantment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -49,7 +51,7 @@ public class SakuraGroup {
         for (Field field : enchantmentRegClassDeclaredFields) {
             if (field.getType() == RegistryObject.class) {
                 try {
-                    RegistryObject<SakuraEnchantment> registryObject = (RegistryObject<SakuraEnchantment>) field.get(null);
+                    RegistryObject<Enchantment> registryObject = (RegistryObject<Enchantment>) field.get(null);
                     enchantments.add(registryObject.get());
                 } catch (Exception e) {
                     e.printStackTrace();

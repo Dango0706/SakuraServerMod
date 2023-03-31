@@ -1,18 +1,22 @@
 package me.tuanzi.sakura.enchantments.events;
 
+import me.tuanzi.sakura.enchantments.EnchantmentReg;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -27,20 +31,31 @@ public class ToolEvent {
     public static void breakBlock(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         ItemStack mainHand = player.getMainHandItem();
-        int level = mainHand.getEnchantmentLevel(VEIN_MINE.get());
-        if (level < 1)
-            return;
-        if (mainHand.getItem() instanceof PickaxeItem || mainHand.getItem() instanceof AxeItem) {
-            int damage = mainHand.getMaxDamage() - mainHand.getDamageValue();
-            BlockState block = event.getState();
-            BlockPos pos = event.getPos();
-            if (player.getPose() == Pose.CROUCHING) {
-                if (player.getFoodData().getFoodLevel() > 0) {
-                    des(player.level, pos, player, level * 5 + 2, damage, block.getBlock());
-                } else {
-                    player.sendSystemMessage(Component.empty().append("你饿死了,吃点东西在连锁挖矿吧!"));
-                }
+        //连锁
+        if (mainHand.getEnchantmentLevel(VEIN_MINE.get()) > 0) {
+            if (mainHand.getItem() instanceof PickaxeItem || mainHand.getItem() instanceof AxeItem) {
+                int level = mainHand.getEnchantmentLevel(VEIN_MINE.get());
+                int damage = mainHand.getMaxDamage() - mainHand.getDamageValue();
+                BlockState block = event.getState();
+                BlockPos pos = event.getPos();
+                if (player.getPose() == Pose.CROUCHING) {
+                    if (player.getFoodData().getFoodLevel() > 0) {
+                        des(player.level, pos, player, level * 5 + 2, damage, block.getBlock());
+                    } else {
+                        player.sendSystemMessage(Component.empty().append("你饿死了,吃点东西在连锁挖矿吧!"));
+                    }
 
+                }
+            }
+        }
+        //钻石无处不在
+        if (mainHand.getEnchantmentLevel(EnchantmentReg.DIAMONDS_EVERYWHERE.get()) > 0) {
+            if (event.getState().getMaterial() == Material.STONE) {
+                if (player.getRandom().nextDouble() < 0.05 * mainHand.getEnchantmentLevel(EnchantmentReg.DIAMONDS_EVERYWHERE.get())) {
+                    ItemStack itemStack = new ItemStack(Items.DIAMOND);
+                    ItemEntity itemEntity = new ItemEntity(player.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), itemStack);
+                    itemEntity.spawnAtLocation(itemStack);
+                }
             }
         }
 
