@@ -120,4 +120,20 @@ public class SakuraBowItem extends BowItem {
     }
 
 
+
+
+    /**
+     * How long it takes to use or consume an item
+     *
+     * @param pStack
+     */
+/*    @Override
+    public int getUseDuration(ItemStack pStack) {
+        int enchantmentLevel = pStack.getEnchantmentLevel(EnchantmentReg.QUICK_DRAW.get());
+        return enchantmentLevel > 0 ? Math.max(72000 - 12000 * enchantmentLevel, 12000) : 72000;
+    }*/
+
+
+
+
 }

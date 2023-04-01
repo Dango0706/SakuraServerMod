@@ -1,5 +1,6 @@
 package me.tuanzi.sakura.enchantments.tool;
 
+import me.tuanzi.sakura.enchantments.EnchantmentReg;
 import me.tuanzi.sakura.enchantments.SakuraEnchantment;
 import me.tuanzi.sakura.enchantments.SakuraRarity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -43,7 +44,7 @@ public class DiamondsEverywhere extends SakuraEnchantment {
 
     @Override
     public boolean checkCompatibility(Enchantment pEnch) {
-        return super.checkCompatibility(pEnch) && pEnch != Enchantments.SILK_TOUCH;
+        return super.checkCompatibility(pEnch) && pEnch != Enchantments.SILK_TOUCH && pEnch != EnchantmentReg.VEIN_MINE.get();
     }
 
     /**

@@ -10,6 +10,12 @@ public enum EliteSkills {
     WITHER("凋零",0),
     RELIFE("重生",0),
     DISARM("缴械", 0),
+    NINJA("忍者",0),
+    DEFENSE("绝对防御",0),
+    SCORCHING("灼热",0),
+    PUMMEL("重击",0),
+    KNOCKBACK("击退",0),
+
     ;
     private final String name;
     private final int level;

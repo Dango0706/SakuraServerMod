@@ -6,6 +6,7 @@ import me.tuanzi.sakura.enchantments.armor.Extensions;
 import me.tuanzi.sakura.enchantments.armor.MagicProtection;
 import me.tuanzi.sakura.enchantments.armor.Vitality;
 import me.tuanzi.sakura.enchantments.bow.MultipleShoot;
+import me.tuanzi.sakura.enchantments.bow.QuickDraw;
 import me.tuanzi.sakura.enchantments.bow.Wither;
 import me.tuanzi.sakura.enchantments.sword.*;
 import me.tuanzi.sakura.enchantments.tool.DiamondsEverywhere;
@@ -45,5 +46,7 @@ public class EnchantmentReg {
     public static final RegistryObject<Enchantment> MULTIPLE_SHOOT = ENCHANTMENTS.register("multiple_shoot", MultipleShoot::new);
     public static final RegistryObject<Enchantment> VEIN_MINE = ENCHANTMENTS.register("vein_mine", VeinMine::new);
     public static final RegistryObject<Enchantment> DIAMONDS_EVERYWHERE = ENCHANTMENTS.register("diamonds_everywhere", DiamondsEverywhere::new);
+    public static final RegistryObject<Enchantment> QUICK_DRAW = ENCHANTMENTS.register("quick_draw", QuickDraw::new);
+    public static final RegistryObject<Enchantment> BATHING_REJUVENATE = ENCHANTMENTS.register("bathing_rejuvenate", me.tuanzi.sakura.enchantments.armor.BathingRejuvenate::new);
 
 }

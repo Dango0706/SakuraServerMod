@@ -1,0 +1,12 @@
+{
+  "name": "沐浴回春",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[沐浴回春]$(br)可应用类型:胸甲$(br)获取方式:$(l:block/magic_table#table)注魔桌",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(a)稀有$()$(br)最高附魔等级:$(6)4$(br)$()描述:增加治疗量,每级额外增加20%."
+    }
+  ]
+}

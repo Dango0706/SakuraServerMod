@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -262,90 +263,131 @@ public class EliteMobEvent {
                             }
                         }
                     }
-
-                    //技能
-                    if (mob.getTarget() != null) {
-                        LivingEntity target = mob.getTarget();
-                        double x = target.getX();
-                        double y = target.getY();
-                        double z = target.getZ();
-                        Vec3 targetVec3 = new Vec3(x, y, z);
-                        Vec3 mobVec3 = new Vec3(mob.getX(), mob.getY(), mob.getZ());
-                        //小于7格范围内
-                        if (targetVec3.distanceTo(mobVec3) < 7) {
-                            //升空
-                            if (mob.getPersistentData().getBoolean(EliteSkills.LEVITATION.getName())) {
-                                String skill = EliteSkills.LEVITATION.getName();
-                                //冷却到了
-                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //冷却10s
-                                    mob.getPersistentData().putInt(skill + "冷却", 200);
-                                    //使目标升空
-                                    if (target instanceof ServerPlayer p) {
-                                        p.getPersistentData().putBoolean("被升空", true);
-                                        p.hurt(DamageSource.mobAttack(mob), 0.05f);
-                                    }
-                                }
-                            }
-                            //中毒
-                            if (mob.getPersistentData().getBoolean(EliteSkills.POTION.getName())) {
-                                String skill = EliteSkills.POTION.getName();
-                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //冷却5s
-                                    mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
-                                    //使目标中毒
-                                    target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
-
-                                }
-                            }
-                            //饥饿
-                            if (mob.getPersistentData().getBoolean(EliteSkills.HUNGER.getName())) {
-                                String skill = EliteSkills.HUNGER.getName();
-                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //冷却5s
-                                    mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
-                                    //使目标饥饿
-                                    target.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
-                                }
-
-                            }
-                            //失明
-                            if (mob.getPersistentData().getBoolean(EliteSkills.BLINDNESS.getName())) {
-                                String skill = EliteSkills.BLINDNESS.getName();
-                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //冷却10s
-                                    mob.getPersistentData().putInt(skill + "冷却", 20 * 10);
-                                    //使目标饥饿
-                                    target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 0));
-
-                                }
-                            }//虚弱
-                            if (mob.getPersistentData().getBoolean(EliteSkills.WEAKNESS.getName())) {
-                                String skill = EliteSkills.WEAKNESS.getName();
-                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //冷却5s
-                                    mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
-                                    //使目标饥饿
-                                    target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
-
-                                }
-                            }
-                            if (mob.getPersistentData().getBoolean(EliteSkills.WITHER.getName())) {
-                                String skill = EliteSkills.WITHER.getName();
-                                if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
-                                    //冷却5s
-                                    mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
-                                    //使目标饥饿
-                                    target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
-
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
     }
+
+    //修改逻辑:为攻击这个生物的人受到技能影响.
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void livingDamage(LivingDamageEvent event) {
+        //生物被精英怪打
+        if (event.getSource().getEntity() instanceof Mob mob) {
+            LivingEntity target = event.getEntity();
+            //重击
+            if (mob.getPersistentData().getBoolean(EliteSkills.PUMMEL.getName())) {
+                event.setAmount(event.getAmount() * 1.2f);
+            }
+            //击退
+            if (mob.getPersistentData().getBoolean(EliteSkills.KNOCKBACK.getName())) {
+                target.knockback(10/*附魔:击退 的等级*/ * 0.5F, Mth.sin(mob.getYRot() * ((float) Math.PI / 180F)), -Mth.cos(mob.getYRot() * ((float) Math.PI / 180F)));
+            }
+
+        }
+        //精英怪受伤
+        if (event.getEntity() instanceof Mob mob) {
+            if (event.getSource().getEntity() instanceof LivingEntity target) {
+                double x = target.getX();
+                double y = target.getY();
+                double z = target.getZ();
+                Vec3 targetVec3 = new Vec3(x, y, z);
+                Vec3 mobVec3 = new Vec3(mob.getX(), mob.getY(), mob.getZ());
+                //小于7格范围内
+                if (targetVec3.distanceTo(mobVec3) < 7) {
+                    //升空
+                    if (mob.getPersistentData().getBoolean(EliteSkills.LEVITATION.getName())) {
+                        String skill = EliteSkills.LEVITATION.getName();
+                        //冷却到了
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却10s
+                            mob.getPersistentData().putInt(skill + "冷却", 200);
+                            //使目标升空
+                            if (target instanceof ServerPlayer p) {
+                                p.getPersistentData().putBoolean("被升空", true);
+                                p.hurt(DamageSource.mobAttack(mob), 0.05f);
+                            } else {
+                                target.push(0, 1.2, 0);
+                            }
+                        }
+                    }
+                    //中毒
+                    if (mob.getPersistentData().getBoolean(EliteSkills.POTION.getName())) {
+                        String skill = EliteSkills.POTION.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却5s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                            //使目标中毒
+                            target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
+
+                        }
+                    }
+                    //饥饿
+                    if (mob.getPersistentData().getBoolean(EliteSkills.HUNGER.getName())) {
+                        String skill = EliteSkills.HUNGER.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却5s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                            //使目标饥饿
+                            target.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
+                        }
+
+                    }
+                    //失明
+                    if (mob.getPersistentData().getBoolean(EliteSkills.BLINDNESS.getName())) {
+                        String skill = EliteSkills.BLINDNESS.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却10s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 10);
+                            //使目标饥饿
+                            target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 0));
+
+                        }
+                    }//虚弱
+                    if (mob.getPersistentData().getBoolean(EliteSkills.WEAKNESS.getName())) {
+                        String skill = EliteSkills.WEAKNESS.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却5s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                            //使目标饥饿
+                            target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+
+                        }
+                    }//凋零
+                    if (mob.getPersistentData().getBoolean(EliteSkills.WITHER.getName())) {
+                        String skill = EliteSkills.WITHER.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却5s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                            target.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
+
+                        }
+                    }//忍者
+                    if (mob.getPersistentData().getBoolean(EliteSkills.NINJA.getName())) {
+                        String skill = EliteSkills.NINJA.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却5s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                            mob.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 100, 0));
+                        }
+                    }//灼热
+                    if (mob.getPersistentData().getBoolean(EliteSkills.SCORCHING.getName())) {
+                        String skill = EliteSkills.SCORCHING.getName();
+                        if (mob.getPersistentData().getInt(skill + "冷却") <= 0) {
+                            //冷却5s
+                            mob.getPersistentData().putInt(skill + "冷却", 20 * 5);
+                            target.setRemainingFireTicks(200);
+                        }
+                    }
+                }
+            }//绝对防御
+            if (mob.getPersistentData().getBoolean(EliteSkills.DEFENSE.getName())) {
+                event.setAmount(event.getAmount() * 0.85f);
+            }
+        }
+
+
+    }
+
 
     //死亡掉落更多经验
     @SubscribeEvent(priority = EventPriority.HIGHEST)
