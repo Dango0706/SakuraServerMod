@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.tuanzi.sakura.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "sakura.refmap.json",
+  "mixins": [
+    "AnvilScreenMixin",
+    "AnvilMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

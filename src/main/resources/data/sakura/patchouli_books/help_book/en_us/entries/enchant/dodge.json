@@ -1,0 +1,12 @@
+{
+  "name": "闪避",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[闪避]$(br)可应用类型:护腿$(br)获取方式:$(l:block/magic_table#table)注魔桌",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(6)传说$()$(br)最高附魔等级:$(6)4$(br)$()描述:有$(b)1%$()*等级的概率完全规避一次伤害!"
+    }
+  ]
+}

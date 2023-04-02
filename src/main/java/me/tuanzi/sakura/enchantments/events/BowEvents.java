@@ -91,7 +91,7 @@ public class BowEvents {
 
         }
     }
-
+    //快速拉弓(反射)
     private static void tickHeldBow(Player player) {
         try {
             Method m = ObfuscationReflectionHelper.findMethod(LivingEntity.class, "updatingUsingItem");

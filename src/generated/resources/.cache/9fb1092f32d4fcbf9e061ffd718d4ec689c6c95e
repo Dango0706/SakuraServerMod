@@ -1,11 +1,11 @@
-// 1.19.3	2023-03-30T15:08:10.8263372	Recipes
+// 1.19.3	2023-04-02T10:59:14.4439861	Recipes
 11874781e3d688d62c581398a614acb89a160216 data/minecraft/advancements/recipes/misc/deepslate_jadeite_blast.json
 ede397689d0c19dd5bd4c01ddc90c44b670d2f92 data/minecraft/advancements/recipes/misc/deepslate_jadeite_smelting.json
 a33ba1ffe4f6578d54421eaffab3a725a595f742 data/minecraft/advancements/recipes/misc/deepslate_ruby_blast.json
 bf6caac3320d43bd11e14cead2a2a8b52dbb90fd data/minecraft/advancements/recipes/misc/deepslate_ruby_smelting.json
 62a7bc4c57bee6b6c1164708b91c6590ae17fdbd data/minecraft/advancements/recipes/misc/ruby_blast.json
 a4fc7047032ef9d31c07a4f351e2d913be6d7cef data/minecraft/advancements/recipes/misc/ruby_smelting.json
-2c6326996cc221185ed977d75bd78976cc87a65a data/minecraft/advancements/recipes/misc/wither_skeleton_skull.json
+866c88c0849fd5bdf1ae0077b3c375d48727965f data/minecraft/advancements/recipes/misc/wither_skeleton_skull.json
 c9be74143bd6929e27d7a24e19c31000840c4d51 data/minecraft/recipes/deepslate_jadeite_blast.json
 dcb26e0432ba95569ebb13b2b412f5da37bbd3d9 data/minecraft/recipes/deepslate_jadeite_smelting.json
 1dcea717b2d4efc879e1d858500f5bbc17ca3ab8 data/minecraft/recipes/deepslate_ruby_blast.json
