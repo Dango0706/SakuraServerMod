@@ -36,14 +36,9 @@ public class FinalDamageEvent {
         //魔法易溶
         //最终添加magicDamage
         if (/*isAddMagicDamage||*/victim.getPersistentData().getBoolean("isAddMagicDamage")) {
-
-//            event.setAmount(event.getAmount() + magicDamage);
             event.setAmount(event.getAmount() + victim.getPersistentData().getFloat("magicDamage"));
             victim.getPersistentData().remove("isAddMagicDamage");
             victim.getPersistentData().remove("magicDamage");
-/*
-            isAddMagicDamage = false;
-            magicDamage = 0;*/
         }
         //抗性下降(每级增加10%最终受到的伤害)
         if ((victim.getEffect(SURRENDER.get()) != null && victim.getEffect(SURRENDER.get()).getDuration() > 0)) {

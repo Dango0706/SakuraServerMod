@@ -133,9 +133,7 @@ public class AddDamageEvent {
                 if (itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get()) > 0) {
                     if (magicDamage > 0) {
                         //削减魔法伤害
-//                        magicDamage -= event.getAmount() * (0.05f * itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get()));
                         victim.getPersistentData().putFloat("magicDamage", victim.getPersistentData().getFloat("magicDamage") * (0.05f * itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get())));
-
                     }
                     if (event.getSource().isMagic()) {
                         reduceDamage += event.getAmount() * (0.05f * itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get()));
@@ -149,6 +147,8 @@ public class AddDamageEvent {
                         damage = 0;
                         magicDamage = 0;
                         isAddMagicDamage = false;
+                        //消耗3点耐久值.
+                        itemStack.hurt(3, victim.getRandom(), null);
                         //播放音效
                         if (victim instanceof ServerPlayer serverPlayer)
                             serverPlayer.connection.send(new ClientboundSoundPacket(Holder.direct(SoundEvent.createVariableRangeEvent(ResourceLocation.tryParse("minecraft:entity.arrow.shoot"))), SoundSource.HOSTILE, victim.getX(), victim.getY(), victim.getZ(), 1, 1.7f, 1));

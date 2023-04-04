@@ -31,6 +31,10 @@ public class MagicStone extends Item {
         super(new Properties());
     }
 
+    protected void resultDraw(UseOnContext use){
+
+    }
+
     @Override
     public @NotNull InteractionResult useOn(UseOnContext use) {
         if (!use.getLevel().isClientSide() && use.getPlayer() != null) {
@@ -54,8 +58,11 @@ public class MagicStone extends Item {
                 if (blockPlaced) {
                     Player player = use.getPlayer();
                     ItemStack itemStack = use.getItemInHand();
+                    //总抽卡数
                     String allCount = "sakura:draw_total_count";
+                    //距离五星保底
                     String legCount = "sakura:draw_leg_count";
+                    //距离三星保底
                     String rareCount = "sakura:draw_rare_count";
                     int count = 0;
                     int leg_count = 0;
@@ -156,7 +163,6 @@ public class MagicStone extends Item {
                         player.getPersistentData().putInt(rareCount, rare_count);
                         //增加冷却时间
                         player.getCooldowns().addCooldown(this, 30);
-
                         //潜行
                     } else if (player.getPose() == Pose.CROUCHING) {
                         //发送抽奖信息
