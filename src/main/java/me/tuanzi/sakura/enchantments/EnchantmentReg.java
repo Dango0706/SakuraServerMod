@@ -46,5 +46,6 @@ public class EnchantmentReg {
     public static final RegistryObject<Enchantment> QUICK_DRAW = ENCHANTMENTS.register("quick_draw", QuickDraw::new);
     public static final RegistryObject<Enchantment> BATHING_REJUVENATE = ENCHANTMENTS.register("bathing_rejuvenate", me.tuanzi.sakura.enchantments.armor.BathingRejuvenate::new);
     public static final RegistryObject<Enchantment> DODGE = ENCHANTMENTS.register("dodge", Dodge::new);
+    public static final RegistryObject<Enchantment> HEROIC = ENCHANTMENTS.register("heroic", Heroic::new);
 
 }

@@ -61,7 +61,12 @@ public class AddDamageEvent {
                 if (addDamage)
                     damage += daggerItem.getDamage();
             }
-
+            //增加基础伤害.
+            //英勇
+            if (mainHand.getEnchantmentLevel(EnchantmentReg.HEROIC.get()) > 0) {
+                //基础伤害 * (0.3 * 等级 + 已消耗耐久的百分比 * 2),不小于1
+                damage += event.getAmount() * Math.max((0.3 * mainHand.getEnchantmentLevel(EnchantmentReg.HEROIC.get()) + ((float) mainHand.getDamageValue() / (float) mainHand.getMaxDamage()) * 2), 1) - baseDamage;
+            }
             //刺骨
             if (mainHand.getEnchantmentLevel(EnchantmentReg.PIERCING.get()) > 0) {
                 //最大血量*1.5%*level
@@ -100,6 +105,8 @@ public class AddDamageEvent {
                 //额外增加20%*level的已损生命值伤害
                 damage += (victim.getMaxHealth() - victim.getHealth()) * 0.1 * mainHand.getEnchantmentLevel(EnchantmentReg.CHASE.get());
             }
+            //增加乘积伤害.
+            //即基础伤害之上添加伤害.
             //重击
             if (mainHand.getEnchantmentLevel(EnchantmentReg.SMITE.get()) > 0) {
                 int level = mainHand.getEnchantmentLevel(EnchantmentReg.SMITE.get());
@@ -109,7 +116,6 @@ public class AddDamageEvent {
                     damage = (baseDamage + damage) * (1 + 0.3f * level);
                 }
             }
-
             //最后结算攻速指数
             if (abuser instanceof ServerPlayer player) {
                 //乘攻速百分比

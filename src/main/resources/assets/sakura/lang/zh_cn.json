@@ -97,6 +97,7 @@
     "enchantment.sakura.vein_mine": "连锁挖矿",
     "enchantment.sakura.diamonds_everywhere": "钻石无处不在",
     "enchantment.sakura.quick_draw": "快速拉弓",
+    "enchantment.sakura.heroic": "英勇",
     "enchantment.sakura.slot.weapon": "§c[剑]§r",
     "enchantment.sakura.slot.armor": "§d[盔甲]§r",
     "enchantment.sakura.slot.armor_chest": "§d[胸甲]§r",
@@ -111,6 +112,8 @@
     "effect.sakura.steel_body": "钢铁身躯",
     "effect.sakura.purification": "净化",
     "effect.sakura.undying": "不死之躯",
+    "key.sakura.vein_mine": "连锁挖矿",
+    "key.sakura": "樱花",
 
     "item.minecraft.potion.effect.steel_body": "刚性药水",
     "item.minecraft.splash_potion.effect.steel_body": "喷溅型刚性药水",

@@ -6,7 +6,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
@@ -23,6 +22,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 
+import static me.tuanzi.sakura.client.KeyboardInput.VEIN_MINE_KEY;
 import static me.tuanzi.sakura.enchantments.EnchantmentReg.VEIN_MINE;
 
 @Mod.EventBusSubscriber
@@ -38,7 +38,7 @@ public class ToolEvent {
                 int damage = mainHand.getMaxDamage() - mainHand.getDamageValue();
                 BlockState block = event.getState();
                 BlockPos pos = event.getPos();
-                if (player.getPose() == Pose.CROUCHING) {
+                if (VEIN_MINE_KEY.isDown()) {
                     if (player.getFoodData().getFoodLevel() > 0) {
                         des(player.level, pos, player, level * 5 + 2, damage, block.getBlock());
                     } else {
