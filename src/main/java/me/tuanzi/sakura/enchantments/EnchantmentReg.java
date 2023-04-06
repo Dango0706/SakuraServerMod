@@ -4,6 +4,7 @@ import me.tuanzi.sakura.SakuraMain;
 import me.tuanzi.sakura.enchantments.armor.*;
 import me.tuanzi.sakura.enchantments.bow.MultipleShoot;
 import me.tuanzi.sakura.enchantments.bow.QuickDraw;
+import me.tuanzi.sakura.enchantments.bow.SkyShot;
 import me.tuanzi.sakura.enchantments.bow.Wither;
 import me.tuanzi.sakura.enchantments.sword.*;
 import me.tuanzi.sakura.enchantments.tool.DiamondsEverywhere;
@@ -47,5 +48,7 @@ public class EnchantmentReg {
     public static final RegistryObject<Enchantment> BATHING_REJUVENATE = ENCHANTMENTS.register("bathing_rejuvenate", me.tuanzi.sakura.enchantments.armor.BathingRejuvenate::new);
     public static final RegistryObject<Enchantment> DODGE = ENCHANTMENTS.register("dodge", Dodge::new);
     public static final RegistryObject<Enchantment> HEROIC = ENCHANTMENTS.register("heroic", Heroic::new);
+    public static final RegistryObject<Enchantment> BLOOD_RAGE = ENCHANTMENTS.register("blood_rage", BloodRage::new);
+    public static final RegistryObject<Enchantment> SKY_SHOT = ENCHANTMENTS.register("sky_shot", SkyShot::new);
 
 }

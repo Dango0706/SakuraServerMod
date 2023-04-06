@@ -67,6 +67,11 @@ public class AddDamageEvent {
                 //基础伤害 * (0.3 * 等级 + 已消耗耐久的百分比 * 2),不小于1
                 damage += event.getAmount() * Math.max((0.3 * mainHand.getEnchantmentLevel(EnchantmentReg.HEROIC.get()) + ((float) mainHand.getDamageValue() / (float) mainHand.getMaxDamage()) * 2), 1) - baseDamage;
             }
+            //血怒
+            if (mainHand.getEnchantmentLevel(EnchantmentReg.BLOOD_RAGE.get()) > 0) {
+                //基础伤害 * (0.3 * 等级 + 已消耗耐久的百分比 * 2),不小于1
+                damage += (abuser.getMaxHealth()  - abuser.getHealth())  / abuser.getMaxHealth() * 2 * mainHand.getEnchantmentLevel(EnchantmentReg.BLOOD_RAGE.get()) ;
+            }
             //刺骨
             if (mainHand.getEnchantmentLevel(EnchantmentReg.PIERCING.get()) > 0) {
                 //最大血量*1.5%*level
@@ -177,7 +182,6 @@ public class AddDamageEvent {
             event.setAmount(event.getAmount() - reduceDamage);
 
         }
-
         //debug
         LOGGER.debug("计算前总伤害:" + (event.getAmount()));
     }
