@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -17,7 +18,7 @@ import static me.tuanzi.sakura.effects.EffectReg.SURRENDER;
 //经过护甲,药水等计算后造成的伤害量
 @Mod.EventBusSubscriber
 public class FinalDamageEvent {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void Indent(LivingDamageEvent event) {
         //受害者
         LOGGER.debug(String.valueOf(event.getEntity()));

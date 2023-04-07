@@ -14,6 +14,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
@@ -32,7 +33,7 @@ public class BowEvents {
     }
 
     //用完弓
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void useBowShoot(ArrowLooseEvent event) {
         ItemStack itemStack = event.getBow();
         if (!(itemStack.getItem() instanceof SakuraBowItem)) {
@@ -66,6 +67,7 @@ public class BowEvents {
     //刚开始用弓
     @SubscribeEvent
     public static void beforeUseBow(ArrowNockEvent event) {
+        //真无限
         if(event.getBow().getEnchantmentLevel(Enchantments.INFINITY_ARROWS)>0){
             event.getEntity().startUsingItem(event.getHand());
             event.setAction(InteractionResultHolder.success(event.getBow()));
@@ -96,7 +98,6 @@ public class BowEvents {
         try {
             Method m = ObfuscationReflectionHelper.findMethod(LivingEntity.class, "updatingUsingItem");
             m.invoke(player);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

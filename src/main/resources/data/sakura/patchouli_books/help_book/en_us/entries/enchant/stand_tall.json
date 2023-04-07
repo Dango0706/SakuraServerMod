@@ -1,0 +1,12 @@
+{
+  "name": "屹立不倒",
+  "icon": "minecraft:enchanted_book",
+  "category": "sakura:enchant",
+  "pages": [
+    "附魔[屹立不倒]$(br)可应用类型:胸甲$(br)获取方式:$(l:block/magic_table#table)注魔桌",
+    {
+      "type": "patchouli:text",
+      "text": "稀有度:$(6)传说$()$(br)最高附魔等级:$(6)3$(br)$()描述:消耗经验值抵挡最大死亡伤害,消耗:伤害值-2*等级,若不足以抵扣则死亡."
+    }
+  ]
+}

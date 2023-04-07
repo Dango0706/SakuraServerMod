@@ -15,6 +15,7 @@ public enum EliteSkills {
     SCORCHING("灼热",0),
     PUMMEL("重击",0),
     KNOCKBACK("击退",0),
+    SPEED("冲锋",0)
 
     ;
     private final String name;

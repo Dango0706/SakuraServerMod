@@ -169,8 +169,9 @@ public class EliteMobEvent {
 
                 }
                 //公共添加
+                //4.7:不再有高额移速.添加此项为技能池,并且固定为1.5x移速.
                 mob.getAttributes().getInstance(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1);
-                mob.getAttributes().getInstance(Attributes.MOVEMENT_SPEED).setBaseValue(mob.getAttributeBaseValue(Attributes.MOVEMENT_SPEED) * (1 + (float) (mob.getPersistentData().getInt(eliteLevel) * mob.getPersistentData().getInt(eliteLevel)) / 10));
+//                mob.getAttributes().getInstance(Attributes.MOVEMENT_SPEED).setBaseValue(mob.getAttributeBaseValue(Attributes.MOVEMENT_SPEED) * (1 + (float) (mob.getPersistentData().getInt(eliteLevel) * mob.getPersistentData().getInt(eliteLevel)) / 10));
                 double baseHealth = mob.getMaxHealth();
                 //添加技能池
                 for (int i = 0; i < (base + mob.getPersistentData().getInt(eliteLevel) * 4) / 2; i++) {
@@ -382,6 +383,9 @@ public class EliteMobEvent {
             }//绝对防御
             if (mob.getPersistentData().getBoolean(EliteSkills.DEFENSE.getName())) {
                 event.setAmount(event.getAmount() * 0.85f);
+            }//冲锋
+            if (mob.getPersistentData().getBoolean(EliteSkills.SPEED.getName())) {
+                mob.getAttributes().getInstance(Attributes.MOVEMENT_SPEED).setBaseValue(mob.getAttributeBaseValue(Attributes.MOVEMENT_SPEED) * 1.5);
             }
         }
 

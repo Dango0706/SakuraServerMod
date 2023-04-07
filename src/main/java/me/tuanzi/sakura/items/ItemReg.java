@@ -55,10 +55,10 @@ public class ItemReg {
     public static final RegistryObject<Item> JADEITE_SHOVEL = ITEMS.register("jadeite_shovel", JadeiteShovel::new);
     public static final RegistryObject<Item> DEEP_JADEITE_ORE = ITEMS.register("deepslate_jadeite_ore", () -> new BlockItem(BlockReg.DEEP_JADEITE_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> JADEITE_BLOCK = ITEMS.register("jadeite_block", () -> new BlockItem(BlockReg.JADEITE_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<Item> JADEITE_HELMET = ITEMS.register("jadeite_helmet", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.HEAD, (new Item.Properties())));
-    public static final RegistryObject<Item> JADEITE_CHESTPLATE = ITEMS.register("jadeite_chestplate", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.CHEST, (new Item.Properties())));
-    public static final RegistryObject<Item> JADEITE_LEGGINGS = ITEMS.register("jadeite_leggings", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.LEGS, (new Item.Properties())));
-    public static final RegistryObject<Item> JADEITE_BOOTS = ITEMS.register("jadeite_boots", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.FEET, (new Item.Properties())));
+    public static final RegistryObject<Item> JADEITE_HELMET = ITEMS.register("jadeite_helmet", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.HEAD, (new Item.Properties().defaultDurability(500))));
+    public static final RegistryObject<Item> JADEITE_CHESTPLATE = ITEMS.register("jadeite_chestplate", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.CHEST, (new Item.Properties().defaultDurability(1000))));
+    public static final RegistryObject<Item> JADEITE_LEGGINGS = ITEMS.register("jadeite_leggings", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.LEGS, (new Item.Properties().defaultDurability(1000))));
+    public static final RegistryObject<Item> JADEITE_BOOTS = ITEMS.register("jadeite_boots", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.FEET, (new Item.Properties().defaultDurability(500))));
 
     //tiered_item
     public static final RegistryObject<Item> POLE = ITEMS.register("pole", () -> new Item(new Item.Properties()));
