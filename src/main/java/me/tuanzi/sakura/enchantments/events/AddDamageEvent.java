@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
@@ -45,7 +46,7 @@ public class AddDamageEvent {
         LivingEntity victim = event.getEntity();
 
         //(有伤害者)伤害计算
-        if (event.getSource().getEntity() instanceof LivingEntity abuser && !abuser.level.isClientSide()) {
+        if (event.getSource().getEntity() instanceof LivingEntity abuser && !abuser.level().isClientSide()) {
             ItemStack mainHand = abuser.getMainHandItem();
             //是匕首:(增加基础伤害)
             if (mainHand.getItem() instanceof DaggerItem daggerItem) {
@@ -53,7 +54,7 @@ public class AddDamageEvent {
                 for (ItemStack itemStack : victim.getArmorSlots()) {
                     if (itemStack.getItem() instanceof ArmorItem item) {
                         //穿胸甲了
-                        if (item.getSlot() == EquipmentSlot.CHEST) {
+                        if (item.getEquipmentSlot() == EquipmentSlot.CHEST) {
                             addDamage = false;
                         }
                     }
@@ -85,8 +86,8 @@ public class AddDamageEvent {
             }
             //月光祝福/日光祝福
             if (mainHand.getEnchantmentLevel(EnchantmentReg.LUNAR_BLESSING.get()) > 0 || mainHand.getEnchantmentLevel(EnchantmentReg.APOLLO_BLESSING.get()) > 0) {
-                float daytime = abuser.level.getTimeOfDay(1) * 24000;
-                boolean isRain = abuser.level.isRaining();
+                float daytime = abuser.level().getTimeOfDay(1) * 24000;
+                boolean isRain = abuser.level().isRaining();
                 if (isRain) {
                     if (daytime > 12010 && daytime < 23992) {
                         //晚上加伤
@@ -138,7 +139,7 @@ public class AddDamageEvent {
             }
         }
         //(有/无伤害者)伤害计算
-        if (!victim.level.isClientSide()) {
+        if (!victim.level().isClientSide()) {
             for (ItemStack itemStack : victim.getArmorSlots()) {
                 //魔法保护
                 if (itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get()) > 0) {
@@ -146,7 +147,7 @@ public class AddDamageEvent {
                         //削减魔法伤害
                         victim.getPersistentData().putFloat("magicDamage", victim.getPersistentData().getFloat("magicDamage") * (0.05f * itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get())));
                     }
-                    if (event.getSource().isMagic()) {
+                    if (event.getSource().is(DamageTypes.MAGIC)) {
                         reduceDamage += event.getAmount() * (0.05f * itemStack.getEnchantmentLevel(EnchantmentReg.MAGIC_PROTECTION.get()));
                     }
                 }

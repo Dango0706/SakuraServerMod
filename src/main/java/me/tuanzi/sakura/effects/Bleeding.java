@@ -1,6 +1,5 @@
 package me.tuanzi.sakura.effects;
 
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -23,7 +22,7 @@ public class Bleeding extends MobEffect {
         float damage = level + 1;
         boolean move = false;
         //不是客户端
-        if (!entity.level.isClientSide()) {
+        if (!entity.level().isClientSide()) {
             //检查X坐标
             if (entity.getPersistentData().contains("sakura:bleedingOldX")) {
                 if (entity.getPersistentData().getDouble("sakura:bleedingOldX") - entity.getX() != 0) {
@@ -44,7 +43,7 @@ public class Bleeding extends MobEffect {
                 entity.getPersistentData().putDouble("sakura:bleedingOldZ", entity.getZ());
             }
 
-            entity.hurt(DamageSource.MAGIC, damage);
+            entity.hurt(entity.damageSources().magic(), damage);
 
             MobEffectInstance effectInstance = entity.getEffect(this);
             if (effectInstance != null && effectInstance.getDuration() <= 1) {

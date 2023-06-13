@@ -12,7 +12,6 @@ import me.tuanzi.sakura.items.tiered_item.DaggerItem;
 import me.tuanzi.sakura.items.tiered_item.GreatswordItem;
 import me.tuanzi.sakura.items.tiered_item.HalberdItem;
 import me.tuanzi.sakura.items.tiered_item.SakuraBowItem;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -39,10 +38,10 @@ public class ItemReg {
     public static final RegistryObject<Item> RUBY_HOE = ITEMS.register("ruby_hoe", RubyHoe::new);
     public static final RegistryObject<Item> RUBY_SHOVEL = ITEMS.register("ruby_shovel", RubyShovel::new);
 
-    public static final RegistryObject<Item> RUBY_HELMET = ITEMS.register("ruby_helmet", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.HEAD, (new Item.Properties())));
-    public static final RegistryObject<Item> RUBY_CHESTPLATE = ITEMS.register("ruby_chestplate", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.CHEST, (new Item.Properties())));
-    public static final RegistryObject<Item> RUBY_LEGGINGS = ITEMS.register("ruby_leggings", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.LEGS, (new Item.Properties())));
-    public static final RegistryObject<Item> RUBY_BOOTS = ITEMS.register("ruby_boots", () -> new ArmorItem(MyArmorMaterial.RUBY, EquipmentSlot.FEET, (new Item.Properties())));
+    public static final RegistryObject<Item> RUBY_HELMET = ITEMS.register("ruby_helmet", () -> new ArmorItem(MyArmorMaterial.RUBY, ArmorItem.Type.HELMET, (new Item.Properties())));
+    public static final RegistryObject<Item> RUBY_CHESTPLATE = ITEMS.register("ruby_chestplate", () -> new ArmorItem(MyArmorMaterial.RUBY, ArmorItem.Type.CHESTPLATE, (new Item.Properties())));
+    public static final RegistryObject<Item> RUBY_LEGGINGS = ITEMS.register("ruby_leggings", () -> new ArmorItem(MyArmorMaterial.RUBY, ArmorItem.Type.LEGGINGS, (new Item.Properties())));
+    public static final RegistryObject<Item> RUBY_BOOTS = ITEMS.register("ruby_boots", () -> new ArmorItem(MyArmorMaterial.RUBY, ArmorItem.Type.BOOTS, (new Item.Properties())));
     public static final RegistryObject<Item> RUBY_ORE = ITEMS.register("ruby_ore", () -> new BlockItem(BlockReg.RUBY_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> DEEP_RUBY_ORE = ITEMS.register("deepslate_ruby_ore", () -> new BlockItem(BlockReg.DEEP_RUBY_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> RUBY_BLOCK = ITEMS.register("ruby_block", () -> new BlockItem(BlockReg.RUBY_BLOCK.get(), new Item.Properties()));
@@ -55,10 +54,10 @@ public class ItemReg {
     public static final RegistryObject<Item> JADEITE_SHOVEL = ITEMS.register("jadeite_shovel", JadeiteShovel::new);
     public static final RegistryObject<Item> DEEP_JADEITE_ORE = ITEMS.register("deepslate_jadeite_ore", () -> new BlockItem(BlockReg.DEEP_JADEITE_ORE.get(), new Item.Properties()));
     public static final RegistryObject<Item> JADEITE_BLOCK = ITEMS.register("jadeite_block", () -> new BlockItem(BlockReg.JADEITE_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<Item> JADEITE_HELMET = ITEMS.register("jadeite_helmet", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.HEAD, (new Item.Properties().defaultDurability(500))));
-    public static final RegistryObject<Item> JADEITE_CHESTPLATE = ITEMS.register("jadeite_chestplate", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.CHEST, (new Item.Properties().defaultDurability(1000))));
-    public static final RegistryObject<Item> JADEITE_LEGGINGS = ITEMS.register("jadeite_leggings", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.LEGS, (new Item.Properties().defaultDurability(1000))));
-    public static final RegistryObject<Item> JADEITE_BOOTS = ITEMS.register("jadeite_boots", () -> new ArmorItem(MyArmorMaterial.JADEITE, EquipmentSlot.FEET, (new Item.Properties().defaultDurability(500))));
+    public static final RegistryObject<Item> JADEITE_HELMET = ITEMS.register("jadeite_helmet", () -> new ArmorItem(MyArmorMaterial.JADEITE, ArmorItem.Type.HELMET, (new Item.Properties().defaultDurability(500))));
+    public static final RegistryObject<Item> JADEITE_CHESTPLATE = ITEMS.register("jadeite_chestplate", () -> new ArmorItem(MyArmorMaterial.JADEITE, ArmorItem.Type.CHESTPLATE, (new Item.Properties().defaultDurability(1000))));
+    public static final RegistryObject<Item> JADEITE_LEGGINGS = ITEMS.register("jadeite_leggings", () -> new ArmorItem(MyArmorMaterial.JADEITE, ArmorItem.Type.LEGGINGS, (new Item.Properties().defaultDurability(1000))));
+    public static final RegistryObject<Item> JADEITE_BOOTS = ITEMS.register("jadeite_boots", () -> new ArmorItem(MyArmorMaterial.JADEITE, ArmorItem.Type.BOOTS, (new Item.Properties().defaultDurability(500))));
 
     //tiered_item
     public static final RegistryObject<Item> POLE = ITEMS.register("pole", () -> new Item(new Item.Properties()));

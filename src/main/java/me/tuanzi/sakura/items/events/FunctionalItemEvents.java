@@ -29,11 +29,11 @@ public class FunctionalItemEvents {
 
     @SubscribeEvent
     public static void livingDeathEntity(LivingDeathEvent event) {
-        if (event.getEntity() instanceof WitherSkeleton witherSkeleton && event.getSource().getEntity() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof WitherSkeleton witherSkeleton && event.getSource().getEntity() instanceof Player player && !player.level().isClientSide()) {
             //15%*抢夺等级+1的概率掉落
             if (player.getRandom().nextDouble() < 0.25 * (player.getMainHandItem().getEnchantmentLevel(Enchantments.MOB_LOOTING) + 1)) {
                 ItemStack itemStack = new ItemStack(ItemReg.WITHER_SKELETON_SKULL_DEBRIS.get());
-                ItemEntity itemEntity = new ItemEntity(witherSkeleton.getLevel(), witherSkeleton.getX(), witherSkeleton.getY(), witherSkeleton.getZ(), itemStack);
+                ItemEntity itemEntity = new ItemEntity(witherSkeleton.level(), witherSkeleton.getX(), witherSkeleton.getY(), witherSkeleton.getZ(), itemStack);
                 itemEntity.spawnAtLocation(itemStack);
             }
         }

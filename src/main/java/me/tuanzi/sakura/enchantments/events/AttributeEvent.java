@@ -15,8 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import static me.tuanzi.sakura.configs.Config.SKILLED_ATTACK_SPEED;
 import static me.tuanzi.sakura.utils.Utils.*;
-import static net.minecraftforge.common.ForgeMod.ATTACK_RANGE;
-import static net.minecraftforge.common.ForgeMod.REACH_DISTANCE;
+import static net.minecraftforge.common.ForgeMod.*;
 
 @Mod.EventBusSubscriber
 public class AttributeEvent {
@@ -30,7 +29,7 @@ public class AttributeEvent {
 //        }
 
 
-        if (!event.player.level.isClientSide()) {
+        if (!event.player.level().isClientSide()) {
             Player player = event.player;
             ItemStack itemStack = player.getMainHandItem();
             ItemStack chestplateStack = player.getItemBySlot(EquipmentSlot.CHEST);
@@ -47,9 +46,9 @@ public class AttributeEvent {
             //清除map
             modifierMultimap.clear();
             //加触及半径
-            modifierMultimap.put(REACH_DISTANCE.get(), new AttributeModifier(ADD_EXTENSIONS_UUID, "附魔[触及范围扩展]加触及半径", chestplateStack.getEnchantmentLevel(EnchantmentReg.EXTENSIONS.get()), AttributeModifier.Operation.ADDITION));
+            modifierMultimap.put(BLOCK_REACH.get(), new AttributeModifier(ADD_EXTENSIONS_UUID, "附魔[触及范围扩展]加触及半径", chestplateStack.getEnchantmentLevel(EnchantmentReg.EXTENSIONS.get()), AttributeModifier.Operation.ADDITION));
             if (chestplateStack.getEnchantmentLevel(EnchantmentReg.EXTENSIONS.get()) > 0) {
-                if (!player.getAttributes().hasModifier(REACH_DISTANCE.get(), ADD_EXTENSIONS_UUID)) {
+                if (!player.getAttributes().hasModifier(BLOCK_REACH.get(), ADD_EXTENSIONS_UUID)) {
                     player.getAttributes().addTransientAttributeModifiers(modifierMultimap);
                 }
             } else {
@@ -58,9 +57,9 @@ public class AttributeEvent {
             //清除map
             modifierMultimap.clear();
             //加攻击半径
-            modifierMultimap.put(ATTACK_RANGE.get(), new AttributeModifier(ATTACK_EXTENSIONS_UUID, "附魔[攻击范围扩展]加攻击半径", 0.5 * chestplateStack.getEnchantmentLevel(EnchantmentReg.ATTACK_EXTENSIONS.get()), AttributeModifier.Operation.ADDITION));
+            modifierMultimap.put(ENTITY_REACH.get(), new AttributeModifier(ATTACK_EXTENSIONS_UUID, "附魔[攻击范围扩展]加攻击半径", 0.5 * chestplateStack.getEnchantmentLevel(EnchantmentReg.ATTACK_EXTENSIONS.get()), AttributeModifier.Operation.ADDITION));
             if (chestplateStack.getEnchantmentLevel(EnchantmentReg.ATTACK_EXTENSIONS.get()) > 0) {
-                if (!player.getAttributes().hasModifier(ATTACK_RANGE.get(), ATTACK_EXTENSIONS_UUID)) {
+                if (!player.getAttributes().hasModifier(ENTITY_REACH.get(), ATTACK_EXTENSIONS_UUID)) {
                     player.getAttributes().addTransientAttributeModifiers(modifierMultimap);
                 }
             } else {

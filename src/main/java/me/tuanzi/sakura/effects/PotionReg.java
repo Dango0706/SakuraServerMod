@@ -9,6 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import static me.tuanzi.sakura.SakuraMain.MODID;
 
 public class PotionReg {
+    //注册药水(物品)
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, MODID);
 
     public static final RegistryObject<Potion> BLEEDING = POTIONS.register("bleeding", () -> new Potion(new MobEffectInstance(EffectReg.BLEEDING.get(), 20 * 60 * 3, 0)));

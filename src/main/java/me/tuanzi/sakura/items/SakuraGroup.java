@@ -1,3 +1,4 @@
+/*
 package me.tuanzi.sakura.items;
 
 import me.tuanzi.sakura.effects.PotionReg;
@@ -24,11 +25,13 @@ import java.util.ArrayList;
 import static me.tuanzi.sakura.SakuraMain.MODID;
 import static me.tuanzi.sakura.items.ItemReg.RUBY;
 
+*/
 /**
  * @author tuanzi
  * <p>
  * 添加一个创造模式物品栏
- */
+ *//*
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SakuraGroup {
 
@@ -99,7 +102,8 @@ public class SakuraGroup {
                                 populator.accept(itemStack);
                             }
 
-                           /* populator.accept(RUBY.get());
+                           */
+/* populator.accept(RUBY.get());
                             populator.accept(RUBY_ORE.get());
                             populator.accept(RUBY_AXE.get());
                             populator.accept(RUBY_HOE.get());
@@ -124,7 +128,9 @@ public class SakuraGroup {
                             populator.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(SKILLED.get(), SKILLED.get().getMaxLevel())));
                             populator.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(SMITE.get(), SMITE.get().getMaxLevel())));
                             populator.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(LUNAR_BLESSING.get(), LUNAR_BLESSING.get().getMaxLevel())));
-*/
+*//*
+
                         }));
     }
 }
+*/

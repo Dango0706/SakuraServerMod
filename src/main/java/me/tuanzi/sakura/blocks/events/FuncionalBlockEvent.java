@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 public class FuncionalBlockEvent {
     @SubscribeEvent
     public static void playerTick(TickEvent.PlayerTickEvent event) {
-        Level level = event.player.getLevel();
+        Level level = event.player.level();
         Player player = event.player;
         double x = player.getX();
         double y = player.getY();
@@ -22,12 +22,12 @@ public class FuncionalBlockEvent {
         //加时间
         player.getPersistentData().putInt("ELEVATOR", player.getPersistentData().getInt("ELEVATOR") + 1);
         //电梯
-        if (level.getBlockState(new BlockPos(x, y - 1, z)).getBlock() == BlockReg.ELEVATOR.get()) {
+        if (level.getBlockState(new BlockPos((int) x, (int) (y - 1), (int) z)).getBlock() == BlockReg.ELEVATOR.get()) {
             if (player instanceof LocalPlayer player1) {
                 if (player.getPersistentData().getInt("ELEVATOR") > 20) {
                     if (player1.input.jumping) {
                         for (int i = 2; i < 100; i++) {
-                            if (level.getBlockState(new BlockPos(x, y + i, z)).getBlock() == BlockReg.ELEVATOR.get()) {
+                            if (level.getBlockState(new BlockPos((int) x, (int) (y + i), (int) z)).getBlock() == BlockReg.ELEVATOR.get()) {
                                 player.absMoveTo(x, y + 1 + i - 0.42, z);
                                 player1.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
                                 player.getPersistentData().putInt("ELEVATOR",0);
@@ -37,7 +37,7 @@ public class FuncionalBlockEvent {
                     }
                     if (player1.input.shiftKeyDown) {
                         for (int i = 2; i < 100; i++) {
-                            if (level.getBlockState(new BlockPos(x, y - i, z)).getBlock() == BlockReg.ELEVATOR.get()) {
+                            if (level.getBlockState(new BlockPos((int) x, (int) (y - i), (int) z)).getBlock() == BlockReg.ELEVATOR.get()) {
                                 player.absMoveTo(x, y + 1 - i, z);
                                 player1.playSound(SoundEvents.ENDERMAN_TELEPORT, 1, 1);
                                 player.getPersistentData().putInt("ELEVATOR",0);

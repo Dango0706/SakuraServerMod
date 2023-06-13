@@ -8,9 +8,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +18,7 @@ public class DeepRubyOre extends Block {
     /*未知问题:是stone但挖掘速度很慢*/
     //todo:fix是stone但挖掘速度很慢
     public DeepRubyOre() {
-        super(Properties.of(Material.STONE, MaterialColor.STONE).sound(SoundType.DEEPSLATE).strength(4.75f).requiresCorrectToolForDrops());
+        super(Properties.of().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE).strength(4.75f).requiresCorrectToolForDrops());
     }
 
     /**
@@ -39,7 +38,7 @@ public class DeepRubyOre extends Block {
     }
 
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
         List<ItemStack> dropsOriginal = super.getDrops(state, builder);
         if (!dropsOriginal.isEmpty())
             return dropsOriginal;

@@ -36,7 +36,7 @@ public class SoulBound {
 
     @SubscribeEvent
     public static void test (LivingDropsEvent event){
-        if(event.getEntity().getLevel().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY))
+        if(event.getEntity().level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY))
             return;
 
         if(event.getEntity() instanceof Player player){

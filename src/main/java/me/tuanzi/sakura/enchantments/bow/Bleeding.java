@@ -43,7 +43,7 @@ public class Bleeding extends SakuraEnchantment {
 
     @Override
     public void doPostAttack(LivingEntity livingEntity, Entity entity, int level) {
-        if (!livingEntity.level.isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             if (entity instanceof LivingEntity livingEntity1) {
                 livingEntity1.addEffect(new MobEffectInstance(EffectReg.BLEEDING.get(), 20 * level, level, false, false));
             }

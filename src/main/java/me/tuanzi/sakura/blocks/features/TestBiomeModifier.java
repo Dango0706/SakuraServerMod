@@ -30,7 +30,7 @@ public record TestBiomeModifier(HolderSet<Biome> biomes) implements BiomeModifie
         try {
             return DataResult.success(GenerationStep.Decoration.valueOf(name));
         } catch (Exception e) {
-            return DataResult.error("Not a decoration stage: " + name);
+            return DataResult.error(() -> "Not a decoration stage: " + name);
         }
     }
 

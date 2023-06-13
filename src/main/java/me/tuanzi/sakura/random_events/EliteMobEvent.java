@@ -11,7 +11,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -27,11 +26,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static me.tuanzi.sakura.utils.Utils.COLOR_CODE;
@@ -89,7 +89,7 @@ public class EliteMobEvent {
 
     //生成
     @SubscribeEvent
-    public static void mobSpawn(LivingSpawnEvent.SpecialSpawn event) {
+    public static void mobSpawn(MobSpawnEvent.FinalizeSpawn event) {
         LevelAccessor level = event.getLevel();
         if (event.getEntity() instanceof Monster mob) {
             //设置基础
@@ -217,50 +217,53 @@ public class EliteMobEvent {
     //技能
     @SubscribeEvent
     public static void Livingtick(TickEvent.LevelTickEvent event) {
-        Level level = event.level;
-        Iterable<Entity> entityIterator = ((ServerLevel) level).getAllEntities();
-        for (Entity entity : entityIterator) {
-            if (entity instanceof Mob mob) {
-                //是精英怪
-                if (mob.getPersistentData().getInt(eliteLevel) > 0) {
-                    //攻击目标不是玩家
-                    if (mob.getTarget() != null && mob.getTarget().getType() != EntityType.PLAYER) {
-                        double x = mob.getX();
-                        double y = mob.getY();
-                        double z = mob.getZ();
-                        ArrayList<Entity> entities = (ArrayList<Entity>) level.getEntities(mob, AABB.of(BoundingBox.fromCorners(new Vec3i(x - 40, y - 40, z - 40), new Vec3i(x + 40, y + 40, z + 40))));
-                        for (Entity entity1 : entities) {
-                            //设置攻击目标为玩家
-                            //todo:设置为最近的玩家
-                            if (entity1 instanceof Player player) {
-                                mob.setTarget(player);
-                            }
-                        }
-                    }
-                    //可被激怒生物设置为玩家.
-                    if (mob instanceof NeutralMob mob1) {
-                        double x = mob.getX();
-                        double y = mob.getY();
-                        double z = mob.getZ();
-                        ArrayList<Entity> entities = (ArrayList<Entity>) level.getEntities(mob, AABB.of(BoundingBox.fromCorners(new Vec3i(x - 40, y - 40, z - 40), new Vec3i(x + 40, y + 40, z + 40))));
-                        for (Entity entity1 : entities) {
-                            //设置攻击目标为玩家
-                            //todo:设置为最近的玩家
-                            if (entity1 instanceof Player player) {
-                                mob1.setLastHurtByMob(player);
-                                mob1.setPersistentAngerTarget(player.getUUID());
-                                mob1.setTarget(player);
-                                mob1.setRemainingPersistentAngerTime(999999999);
-                            }
-                        }
+        if(!event.level.isClientSide()){
 
-                    }
-                    //减冷却
-                    if (!level.isClientSide()) {
-                        for (EliteSkills skills : EliteSkills.values()) {
-                            String s = skills.getName();
-                            if (mob.getPersistentData().getBoolean(s)) {
-                                mob.getPersistentData().putInt(s + "冷却", Math.max(0, mob.getPersistentData().getInt(s + "冷却") - 1));
+            ServerLevel level = (ServerLevel) event.level;
+            Iterable<Entity> entityIterator = level.getAllEntities();
+            for (Entity entity : entityIterator) {
+                if (entity instanceof Mob mob) {
+                    //是精英怪
+                    if (mob.getPersistentData().getInt(eliteLevel) > 0) {
+                        //攻击目标不是玩家
+                        if (mob.getTarget() != null && mob.getTarget().getType() != EntityType.PLAYER) {
+                            double x = mob.getX();
+                            double y = mob.getY();
+                            double z = mob.getZ();
+                            ArrayList<Entity> entities = (ArrayList<Entity>) level.getEntities(mob, AABB.of(BoundingBox.fromCorners(new Vec3i((int) (x - 40), (int) (y - 40), (int) (z - 40)), new Vec3i((int) (x + 40), (int) (y + 40), (int) (z + 40)))));
+                            for (Entity entity1 : entities) {
+                                //设置攻击目标为玩家
+                                //todo:设置为最近的玩家
+                                if (entity1 instanceof Player player) {
+                                    mob.setTarget(player);
+                                }
+                            }
+                        }
+                        //可被激怒生物设置为玩家.
+                        if (mob instanceof NeutralMob mob1) {
+                            double x = mob.getX();
+                            double y = mob.getY();
+                            double z = mob.getZ();
+                            ArrayList<Entity> entities = (ArrayList<Entity>) level.getEntities(mob, AABB.of(BoundingBox.fromCorners(new Vec3i((int) (x - 40), (int) (y - 40), (int) (z - 40)), new Vec3i((int) (x + 40), (int) (y + 40), (int) (z + 40)))));
+                            for (Entity entity1 : entities) {
+                                //设置攻击目标为玩家
+                                //todo:设置为最近的玩家
+                                if (entity1 instanceof Player player) {
+                                    mob1.setLastHurtByMob(player);
+                                    mob1.setPersistentAngerTarget(player.getUUID());
+                                    mob1.setTarget(player);
+                                    mob1.setRemainingPersistentAngerTime(999999999);
+                                }
+                            }
+
+                        }
+                        //减冷却
+                        if (!level.isClientSide()) {
+                            for (EliteSkills skills : EliteSkills.values()) {
+                                String s = skills.getName();
+                                if (mob.getPersistentData().getBoolean(s)) {
+                                    mob.getPersistentData().putInt(s + "冷却", Math.max(0, mob.getPersistentData().getInt(s + "冷却") - 1));
+                                }
                             }
                         }
                     }
@@ -305,7 +308,7 @@ public class EliteMobEvent {
                             //使目标升空
                             if (target instanceof ServerPlayer p) {
                                 p.getPersistentData().putBoolean("被升空", true);
-                                p.hurt(DamageSource.mobAttack(mob), 0.05f);
+                                p.hurt(p.damageSources().mobAttack(mob), 0.05f);
                             } else {
                                 target.push(0, 1.2, 0);
                             }
@@ -400,16 +403,19 @@ public class EliteMobEvent {
         if (event.getEntity().getPersistentData().getBoolean(isElite)) {
             //精英怪等级
             int level = event.getEntity().getPersistentData().getInt(eliteLevel);
-            Level worldLevel = event.getEntity().getLevel();
             int base;
-            if (worldLevel.getDifficulty() == Difficulty.PEACEFUL) {
-                base = 0;
-            } else if (worldLevel.getDifficulty() == Difficulty.EASY) {
-                base = 2;
-            } else if (worldLevel.getDifficulty() == Difficulty.NORMAL) {
-                base = 4;
-            } else {
-                base = 8;
+            try (Level worldLevel = event.getEntity().level()) {
+                if (worldLevel.getDifficulty() == Difficulty.PEACEFUL) {
+                    base = 0;
+                } else if (worldLevel.getDifficulty() == Difficulty.EASY) {
+                    base = 2;
+                } else if (worldLevel.getDifficulty() == Difficulty.NORMAL) {
+                    base = 4;
+                } else {
+                    base = 8;
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
             //等级 * 基数
             level *= level;

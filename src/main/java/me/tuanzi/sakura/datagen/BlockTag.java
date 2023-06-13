@@ -4,7 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.DeferredRegister;
@@ -34,7 +34,7 @@ public class BlockTag extends BlockTagsProvider {
 
     protected final void addPickaxe(Set<? extends Block> blocks) {
         for (Block block : blocks) {
-            if (block.defaultBlockState().getMaterial() == Material.STONE || block.defaultBlockState().getMaterial() == Material.METAL) {
+            if (block.defaultMapColor() == MapColor.STONE || block.defaultMapColor() == MapColor.METAL) {
                 tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
             }
         }

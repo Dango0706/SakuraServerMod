@@ -11,7 +11,7 @@ public class Fasten extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-        if (!pLivingEntity.level.isClientSide()) {
+        if (!pLivingEntity.level().isClientSide()) {
             //todo:fix缓慢移动,且可以飞天
 
 //            pLivingEntity.move(MoverType.PLAYER,pLivingEntity.getPosition(1));

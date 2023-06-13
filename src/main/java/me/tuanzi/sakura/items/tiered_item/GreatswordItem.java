@@ -20,7 +20,6 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 import static me.tuanzi.sakura.utils.Utils.TIERED_ITEM_BASE_ATTACK_RANGE_UUID;
-import static net.minecraftforge.common.ForgeMod.ATTACK_RANGE;
+import static net.minecraftforge.common.ForgeMod.ENTITY_REACH;
 
 public class GreatswordItem  extends TieredItem implements Vanishable {
     private final float attackDamage;
@@ -43,7 +42,7 @@ public class GreatswordItem  extends TieredItem implements Vanishable {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
-        builder.put(ATTACK_RANGE.get(), new AttributeModifier(TIERED_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", 0.5, AttributeModifier.Operation.ADDITION));
+        builder.put(ENTITY_REACH.get(), new AttributeModifier(TIERED_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", 0.5, AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
     }
 
@@ -59,8 +58,7 @@ public class GreatswordItem  extends TieredItem implements Vanishable {
         if (pState.is(Blocks.COBWEB)) {
             return 15.0F;
         } else {
-            Material material = pState.getMaterial();
-            return material != Material.PLANT && material != Material.REPLACEABLE_PLANT && !pState.is(BlockTags.LEAVES) && material != Material.VEGETABLE ? 1.0F : 1.5F;
+            return pState.is(BlockTags.SWORD_EFFICIENT) ? 1.5F : 1.0F;
         }
     }
 

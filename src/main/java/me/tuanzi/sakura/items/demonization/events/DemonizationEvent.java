@@ -15,11 +15,11 @@ import net.minecraftforge.fml.common.Mod;
 public class DemonizationEvent {
     @SubscribeEvent
     public static void wardenDeathEvent(LivingDeathEvent event) {
-        if (event.getEntity() instanceof Warden warden && event.getSource().getEntity() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof Warden warden && event.getSource().getEntity() instanceof Player player && !player.level().isClientSide()) {
             //15%*抢夺等级+1的概率掉落
             if (player.getRandom().nextDouble() < 0.15 * (player.getMainHandItem().getEnchantmentLevel(Enchantments.MOB_LOOTING) + 1)) {
                 ItemStack itemStack = new ItemStack(ItemReg.WARDEN_HEART.get());
-                ItemEntity itemEntity = new ItemEntity(warden.getLevel(), warden.getX(), warden.getY(), warden.getZ(), itemStack);
+                ItemEntity itemEntity = new ItemEntity(warden.level(), warden.getX(), warden.getY(), warden.getZ(), itemStack);
                 itemEntity.spawnAtLocation(itemStack);
             }
         }
@@ -32,7 +32,7 @@ public class DemonizationEvent {
         //new
         Player New = event.getEntity();
         //避免保底消失
-        if (old != null && New != null && !New.level.isClientSide()) {
+        if (old != null && New != null && !New.level().isClientSide()) {
             if (old.getPersistentData().contains("sakura:draw_total_count")) {
                 New.getPersistentData().putInt("sakura:draw_total_count", old.getPersistentData().getInt("sakura:draw_total_count"));
             }

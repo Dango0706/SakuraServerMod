@@ -15,7 +15,7 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -40,7 +40,7 @@ public class ToolEvent {
                 BlockPos pos = event.getPos();
                 if (VEIN_MINE_KEY.isDown()) {
                     if (player.getFoodData().getFoodLevel() > 0) {
-                        des(player.level, pos, player, level * 5 + 2, damage, block.getBlock());
+                        des(player.level(), pos, player, level * 5 + 2, damage, block.getBlock());
                     } else {
                         player.sendSystemMessage(Component.empty().append("你饿死了,吃点东西在连锁挖矿吧!"));
                     }
@@ -50,10 +50,10 @@ public class ToolEvent {
         }
         //钻石无处不在
         if (mainHand.getEnchantmentLevel(EnchantmentReg.DIAMONDS_EVERYWHERE.get()) > 0) {
-            if (event.getState().getMaterial() == Material.STONE) {
+            if (event.getState().getBlock().defaultMapColor() == MapColor.STONE ||event.getState().getBlock().defaultMapColor() == MapColor.DEEPSLATE ) {
                 if (player.getRandom().nextDouble() < 0.05 * mainHand.getEnchantmentLevel(EnchantmentReg.DIAMONDS_EVERYWHERE.get())) {
                     ItemStack itemStack = new ItemStack(Items.DIAMOND);
-                    ItemEntity itemEntity = new ItemEntity(player.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), itemStack);
+                    ItemEntity itemEntity = new ItemEntity(player.level(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), itemStack);
                     itemEntity.spawnAtLocation(itemStack);
                 }
             }

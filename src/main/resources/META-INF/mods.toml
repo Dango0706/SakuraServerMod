@@ -67,15 +67,15 @@ description='''
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.19.3,1.20)"
+    versionRange="1.20"
     ordering="NONE"
     side="BOTH"
 #联动patchouli
-[[dependencies.sakura]]
-    modId="patchouli"
-    mandatory=false
-    versionRange="[1.19.3-78,)"
+#[[dependencies.sakura]]
+ #   modId="patchouli"
+  #  mandatory=false
+   # versionRange="[1.19.3-78,)"
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-    ordering="NONE"
+   # ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
+    #side="BOTH"

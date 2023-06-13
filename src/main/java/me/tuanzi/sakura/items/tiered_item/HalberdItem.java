@@ -22,8 +22,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static me.tuanzi.sakura.utils.Utils.*;
-import static net.minecraftforge.common.ForgeMod.ATTACK_RANGE;
+import static me.tuanzi.sakura.utils.Utils.TIERED_ITEM_BASE_ATTACK_RANGE_UUID;
+import static net.minecraftforge.common.ForgeMod.ENTITY_REACH;
 
 @Mod.EventBusSubscriber
 public class HalberdItem extends TieredItem implements Vanishable {
@@ -40,7 +40,7 @@ public class HalberdItem extends TieredItem implements Vanishable {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
-        builder.put(ATTACK_RANGE.get(), new AttributeModifier(TIERED_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", 0.5, AttributeModifier.Operation.ADDITION));
+        builder.put(ENTITY_REACH.get(), new AttributeModifier(TIERED_ITEM_BASE_ATTACK_RANGE_UUID, "Weapon modifier", 0.5, AttributeModifier.Operation.ADDITION));
         this.defaultModifiers = builder.build();
     }
 

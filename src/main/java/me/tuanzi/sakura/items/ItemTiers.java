@@ -24,6 +24,8 @@ public enum ItemTiers implements Tier {
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
 
+
+
     ItemTiers(int level, int uses, float speed, float damage, int enchantmentValue, Supplier<Ingredient> supplier) {
         this.level = level;
         this.uses = uses;

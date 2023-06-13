@@ -12,7 +12,7 @@ public class DropXPEvent {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void dropXp(LivingExperienceDropEvent event) {
         Player player = event.getAttackingPlayer();
-        if (player != null && !player.getLevel().isClientSide()) {
+        if (player != null && !player.level().isClientSide()) {
             if (player.getMainHandItem().getEnchantmentLevel(EnchantmentReg.EDUCATION.get()) > 0) {
                 event.setDroppedExperience((int) (event.getDroppedExperience() * (1 + 0.5 * player.getMainHandItem().getEnchantmentLevel(EnchantmentReg.EDUCATION.get()))));
             }

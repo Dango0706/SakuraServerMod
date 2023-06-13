@@ -4,6 +4,7 @@ import me.tuanzi.sakura.effects.EffectReg;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -22,7 +23,7 @@ public class PotionEffectEvent {
         LivingEntity livingEntity = event.getEntity();
         DamageSource damageSource = event.getSource();
         if (livingEntity.hasEffect(EffectReg.UNDYING.get())) {
-            if (damageSource.isBypassInvul())
+            if (damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
                 return;
 
             event.setCanceled(true);
@@ -35,7 +36,7 @@ public class PotionEffectEvent {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
             livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
             livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
-            livingEntity.level.broadcastEntityEvent(livingEntity, (byte) 35);
+            livingEntity.level().broadcastEntityEvent(livingEntity, (byte) 35);
 
         }
     }

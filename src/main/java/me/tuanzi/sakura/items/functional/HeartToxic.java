@@ -21,7 +21,7 @@ public class HeartToxic extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext event) {
-        if (event.getPlayer() != null && !event.getPlayer().level.isClientSide()) {
+        if (event.getPlayer() != null && !event.getPlayer().level().isClientSide()) {
             Player player = event.getPlayer();
             player.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(player.getMaxHealth() - 2);
             player.setHealth(player.getHealth() - 2);

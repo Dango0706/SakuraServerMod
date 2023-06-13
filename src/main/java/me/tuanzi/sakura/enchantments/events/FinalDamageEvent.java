@@ -47,11 +47,11 @@ public class FinalDamageEvent {
         }
         //吸血,鉴定
         //始终最后
-        if (event.getSource().getEntity() instanceof LivingEntity abuser && !abuser.level.isClientSide()) {
+        if (event.getSource().getEntity() instanceof LivingEntity abuser && !abuser.level().isClientSide()) {
             //主手物品
             ItemStack mainHand = abuser.getMainHandItem();
             //是玩家
-            if (abuser instanceof ServerPlayer player && !player.level.isClientSide()) {
+            if (abuser instanceof ServerPlayer player && !player.level().isClientSide()) {
                 //显血(鉴定) 获取最终伤害
                 if (mainHand.getEnchantmentLevel(EnchantmentReg.IDENTIFICATION.get()) > 0) {
                     //todo:更多选择,不仅是ActionBar

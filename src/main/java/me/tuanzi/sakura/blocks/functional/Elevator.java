@@ -1,13 +1,12 @@
 package me.tuanzi.sakura.blocks.functional;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 public class Elevator extends Block {
 
     public Elevator() {
-        super(Properties.of(Material.STONE, MaterialColor.STONE).strength(1f));
+        super(Properties.of().strength(1f).mapColor(MapColor.METAL));
     }
 
 
