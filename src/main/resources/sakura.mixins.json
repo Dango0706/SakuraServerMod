@@ -6,7 +6,8 @@
   "refmap": "sakura.refmap.json",
   "mixins": [
     "AnvilScreenMixin",
-    "AnvilMenuMixin"
+    "AnvilMenuMixin",
+    "MinecartMaxSpeed"
   ],
   "injectors": {
     "defaultRequire": 1

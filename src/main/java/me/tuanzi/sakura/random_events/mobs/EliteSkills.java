@@ -1,4 +1,4 @@
-package me.tuanzi.sakura.random_events;
+package me.tuanzi.sakura.random_events.mobs;
 
 public enum EliteSkills {
 

@@ -16,9 +16,13 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
     // This should be below the net.minecraftforge.gradle plugin
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    //引入这个mixin依赖
+//    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
 apply plugin: 'org.spongepowered.mixin'
+
+
 
 
 version = '1.0.0'
@@ -68,6 +72,8 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', ''
 
+            arg '-mixin.config=sakura.mixins.json'
+
             mods {
                 examplemod {
                     source sourceSets.main
@@ -87,6 +93,8 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'examplemod'
+
+            arg '-mixin.config=sakura.mixins.json'
 
             mods {
                 examplemod {
@@ -123,6 +131,8 @@ minecraft {
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'sakura', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            arg '-mixin.config=sakura.mixins.json'
 
             mods {
                 sakura {
@@ -187,7 +197,8 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "examplemodsareus",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "sakura.mixins.json"
         ])
     }
 }

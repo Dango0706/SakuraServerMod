@@ -1,4 +1,4 @@
-package me.tuanzi.sakura.random_events;
+package me.tuanzi.sakura.random_events.mobs;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
